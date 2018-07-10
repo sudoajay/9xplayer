@@ -8,4 +8,5 @@
     <string name="action_settings">Settings</string>
     <string name="bottom_permission_text">Storage access permission is required to
         scan and play media files on the device.</string>
+    <string name="title_activity_main__navigation_">Main_Navigation_Activity</string>
 </resources>

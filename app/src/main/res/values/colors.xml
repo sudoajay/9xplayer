@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#1384bc</color>
+    <color name="navigation_drawer_background">#2b2b2b</color>
+    <color name="navigation_item_background_on_clicked">#767373</color>
+    <color name="navigation_item_color">#a6ffffff</color>
 </resources>

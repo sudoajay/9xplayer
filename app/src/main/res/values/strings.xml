@@ -9,4 +9,14 @@
     <string name="bottom_permission_text">Storage access permission is required to
         scan and play media files on the device.</string>
     <string name="title_activity_main__navigation_">Main_Navigation_Activity</string>
+
+    <!--Navigation Item Title-->
+    <string name="nav_home_title">Home</string>
+    <string name="nav_music_title">Music</string>
+    <string name="nav_video_title">Video</string>
+    <string name="nav_folder_title">Folder</string>
+    <string name="nav_playlist_title">Playlist</string>
+    <string name="nav_setting_title">Setting</string>
+    <string name="nav_rate_title">Rate-Us</string>
+    
 </resources>

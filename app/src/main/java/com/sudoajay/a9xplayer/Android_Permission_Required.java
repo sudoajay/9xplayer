@@ -1,6 +1,7 @@
 package com.sudoajay.a9xplayer;
 
 import android.Manifest;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -21,9 +22,9 @@ public class Android_Permission_Required {
     private Context context;
     private Activity activity;
     private Handler handler;
-    private Toolbar bottom_Toolbar;
-    public Android_Permission_Required( Toolbar bottom_Toolbar){
-       this.bottom_Toolbar=bottom_Toolbar;
+    public Android_Permission_Required(Context context , Activity activity){
+       this.context = context;
+       this.activity =activity;
     }
 
     //  Get permission
@@ -65,7 +66,6 @@ public class Android_Permission_Required {
         dialog.setContentView(R.layout.activity_custom_dialog_permission);
         Button button_Learn_More = dialog.findViewById(R.id.learn_More_button);
         Button button_Continue = dialog.findViewById(R.id.continue_Button);
-        // if button is clicked, close the custom dialog
 
         button_Learn_More.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +74,6 @@ public class Android_Permission_Required {
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
                 activity.startActivity(i);
-
             }
         });
         button_Continue.setOnClickListener(new View.OnClickListener() {

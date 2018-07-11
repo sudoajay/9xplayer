@@ -13,15 +13,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class Main_Navigation_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private TextView textView_Tittle ;
+    private Android_Permission_Required android_permission_required;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main__navigation_);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar =  findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab =  findViewById(R.id.fab);
@@ -42,8 +45,17 @@ public class Main_Navigation_Activity extends AppCompatActivity
         NavigationView navigationView =  findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-    }
+        // all reference
+        reference();
 
+        //Get the storage permission
+        Storage_Permission();
+
+    }
+    private void reference(){
+        textView_Tittle = findViewById(R.id.textView_Title);
+        android_permission_required = new Android_Permission_Required(this,this);
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer =  findViewById(R.id.drawer_layout);
@@ -63,16 +75,6 @@ public class Main_Navigation_Activity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -81,25 +83,31 @@ public class Main_Navigation_Activity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
+        setTitle("");
         if (id == R.id.nav_Home) {
             // Handle the camera action
+            textView_Tittle.setText(R.string.home_title);
         } else if (id == R.id.nav_Music) {
-
+            textView_Tittle.setText(R.string.music_title);
         } else if (id == R.id.nav_Video) {
-
+            textView_Tittle.setText(R.string.video_title);
         } else if (id == R.id.nav_Folder) {
-
-        } else if (id == R.id.nav_Playlist) {
-
+            textView_Tittle.setText(R.string.folder_title);
+        } else if (id == R.id.nav_Playlists) {
+            textView_Tittle.setText(R.string.playlist_title);
         } else if (id == R.id.nav_Setting) {
 
         }else if (id == R.id.nav_Rate_Us) {
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer =  findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    public void Storage_Permission(){
+        // storage permission check
+        if(!android_permission_required.isExternalStorageWritable())
+            android_permission_required.call_Thread();
     }
 }

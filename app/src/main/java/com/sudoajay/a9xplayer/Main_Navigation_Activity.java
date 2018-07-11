@@ -20,6 +20,7 @@ public class Main_Navigation_Activity extends AppCompatActivity
 
     private TextView textView_Tittle ;
     private Android_Permission_Required android_permission_required;
+    private Grab_The_Music grab_the_music ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +56,7 @@ public class Main_Navigation_Activity extends AppCompatActivity
     private void reference(){
         textView_Tittle = findViewById(R.id.textView_Title);
         android_permission_required = new Android_Permission_Required(this,this);
+        grab_the_music = new Grab_The_Music(this);
     }
     @Override
     public void onBackPressed() {

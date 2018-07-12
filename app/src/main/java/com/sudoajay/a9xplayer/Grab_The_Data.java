@@ -30,14 +30,13 @@ public class Grab_The_Data {
         // array instantiate
         Array_Instantiate();
 
-        // Grab The Data And Stored in Array
-        Get_Music();
-    }
 
-    private void Get_Music() {
+    }
+    // Grab The Data And Stored in Array
+    public void Get_Music() {
         int count=0;
         ContentResolver content_Resolver = activity.getContentResolver();
-        Uri uri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+        Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
         Cursor cursor = content_Resolver.query(uri, null, null, null, MediaStore.Audio.Media.DISPLAY_NAME + " ASC" );
 
         if (cursor != null && cursor.moveToFirst()) {

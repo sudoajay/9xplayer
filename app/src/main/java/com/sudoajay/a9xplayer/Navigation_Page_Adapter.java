@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-public class Tab_Page_Adapter extends FragmentPagerAdapter {
+public class Navigation_Page_Adapter extends FragmentPagerAdapter {
     private Home home = new Home();
     private Music music = new Music();
     private Video video = new Video();
@@ -14,7 +14,7 @@ public class Tab_Page_Adapter extends FragmentPagerAdapter {
     private Playlist playlist = new Playlist();
     private Bundle bundle ,bundles;
 
-    public Tab_Page_Adapter(FragmentManager fm){
+    public Navigation_Page_Adapter(FragmentManager fm){
         super(fm);
 
     }
@@ -37,7 +37,7 @@ public class Tab_Page_Adapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 5;
     }
     public CharSequence getPageTitle(int position){
         switch (position){
@@ -47,6 +47,10 @@ public class Tab_Page_Adapter extends FragmentPagerAdapter {
                 return "Music";
             case 2:
                 return "Video";
+            case 3:
+                return "Folder";
+            case 4:
+                return "Playlist";
         }
         return null;
     }

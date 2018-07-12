@@ -95,7 +95,7 @@ public class Main_Navigation_Activity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
 
         // fragment institate
-        Fragment fragment =new Music();
+        Fragment fragment =new Home();
 
         // Handle navigation view item clicks here.
         int id = item.getItemId();

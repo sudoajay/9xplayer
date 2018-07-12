@@ -1,9 +1,9 @@
 package com.sudoajay.a9xplayer;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,7 +20,8 @@ public class Main_Navigation_Activity extends AppCompatActivity
 
     private TextView textView_Tittle ;
     private Android_Permission_Required android_permission_required;
-    private Grab_The_Music grab_the_music ;
+    private Grab_The_Data grab_the_music ;
+    private ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +57,9 @@ public class Main_Navigation_Activity extends AppCompatActivity
     private void reference(){
         textView_Tittle = findViewById(R.id.textView_Title);
         android_permission_required = new Android_Permission_Required(this,this);
-        grab_the_music = new Grab_The_Music(this);
+        grab_the_music = new Grab_The_Data(this);
+
+        viewPager = findViewById(R.id.view_Pager);
     }
     @Override
     public void onBackPressed() {
@@ -87,7 +90,6 @@ public class Main_Navigation_Activity extends AppCompatActivity
         int id = item.getItemId();
         setTitle("");
         if (id == R.id.nav_Home) {
-            // Handle the camera action
             textView_Tittle.setText(R.string.home_title);
         } else if (id == R.id.nav_Music) {
             textView_Tittle.setText(R.string.music_title);

@@ -26,4 +26,7 @@
     <string name="folder_title">Folder</string>
     <string name="playlist_title">Playlist</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

@@ -3,6 +3,8 @@ package com.sudoajay.a9xplayer;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -21,7 +23,6 @@ public class Main_Navigation_Activity extends AppCompatActivity
     private TextView textView_Tittle ;
     private Android_Permission_Required android_permission_required;
     private Grab_The_Data grab_the_music ;
-    private ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,12 +54,6 @@ public class Main_Navigation_Activity extends AppCompatActivity
         //Get the storage permission
         Storage_Permission();
 
-
-        // view pager to Page adapter
-        viewPager.setAdapter(new Navigation_Page_Adapter(getSupportFragmentManager()));
-
-        // home page
-        viewPager.setCurrentItem(0);
     }
     private void reference(){
         textView_Tittle = findViewById(R.id.textView_Title);
@@ -69,7 +64,9 @@ public class Main_Navigation_Activity extends AppCompatActivity
         // grab The Data
         grab_the_music = new Grab_The_Data(this);
 
-        viewPager = findViewById(R.id.view_Pager);
+
+
+
     }
     @Override
     public void onBackPressed() {
@@ -96,28 +93,39 @@ public class Main_Navigation_Activity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
+        // fragment institate
+        Fragment fragment =new Music();
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         setTitle("");
         if (id == R.id.nav_Home) {
             textView_Tittle.setText(R.string.home_title);
-            viewPager.setCurrentItem(0);
+            fragment = new Home();
         } else if (id == R.id.nav_Music) {
             textView_Tittle.setText(R.string.music_title);
-            viewPager.setCurrentItem(1);
+            fragment = new Music();
         } else if (id == R.id.nav_Video) {
             textView_Tittle.setText(R.string.video_title);
-            viewPager.setCurrentItem(2);
+            fragment = new Video();
         } else if (id == R.id.nav_Folder) {
             textView_Tittle.setText(R.string.folder_title);
-            viewPager.setCurrentItem(3);
+            fragment=new Folder();
         } else if (id == R.id.nav_Playlists) {
             textView_Tittle.setText(R.string.playlist_title);
-            viewPager.setCurrentItem(4);
+            fragment = new Playlist();
         } else if (id == R.id.nav_Setting) {
 
         }else if (id == R.id.nav_Rate_Us) {
 
+        }
+
+
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frame_Layout, fragment);
+            ft.commit();
         }
 
         DrawerLayout drawer =  findViewById(R.id.drawer_layout);

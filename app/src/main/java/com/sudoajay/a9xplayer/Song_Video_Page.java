@@ -7,21 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.io.File;
-import java.util.List;
-
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Music_Songs_Page extends Fragment {
+public class Song_Video_Page extends Fragment {
 
 
-    public Music_Songs_Page() {
+    public Song_Video_Page() {
         // Required empty public constructor
     }
     //
-    public  Music_Songs_Page createInstance() {
+    public Song_Video_Page createInstance() {
 
         return this;
     }

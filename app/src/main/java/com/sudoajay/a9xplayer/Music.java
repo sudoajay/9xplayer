@@ -19,10 +19,11 @@ public class Music extends Fragment {
     private TabLayout music_Tab_Layout;
     private ViewPager music_View_Pager;
     private Tab_Page_Adapter tab_page_adapter;
-    private Music_Songs_Page music_songs_page = new Music_Songs_Page();
+    private Song_Video_Page songVideo_page = new Song_Video_Page();
     private Music_Album_Page  music_album_page = new Music_Album_Page();
-    private Music_Playlist_Page music_playlist_page = new Music_Playlist_Page();
+    private Playlist_Page music_playlist_page = new Playlist_Page();
     private Music_Artist_page music_artist_page = new Music_Artist_page();
+
     public Music() {
         // Required empty public constructor
     }
@@ -53,7 +54,7 @@ public class Music extends Fragment {
 
     }
     public void Set_Fragemts(){
-        tab_page_adapter.addFragment("Songs" , music_songs_page);
+        tab_page_adapter.addFragment("Song" , songVideo_page);
         tab_page_adapter.addFragment("Albums" , music_album_page);
         tab_page_adapter.addFragment("Artist" , music_artist_page);
         tab_page_adapter.addFragment("Playlist" , music_playlist_page);

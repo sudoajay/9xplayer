@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Music_Playlist_Page extends Fragment {
+public class Playlist_Page extends Fragment {
 
 
-    public Music_Playlist_Page() {
+    public Playlist_Page() {
         // Required empty public constructor
     }
 

@@ -14,7 +14,7 @@
     <string name="nav_home_title">Home</string>
     <string name="nav_music_title">Music</string>
     <string name="nav_video_title">Video</string>
-    <string name="nav_folder_title">Folder</string>
+    <string name="nav_directories_title">Directories</string>
     <string name="nav_playlist_title">Playlist</string>
     <string name="nav_setting_title">Setting</string>
     <string name="nav_rate_title">Rate-Us</string>

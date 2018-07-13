@@ -20,7 +20,7 @@
         <item
             android:id="@+id/nav_Folder"
             android:icon="@drawable/folder"
-            android:title="@string/nav_folder_title" />
+            android:title="@string/nav_directories_title" />
         <item
             android:id="@+id/nav_Playlists"
             android:icon="@drawable/playlist"

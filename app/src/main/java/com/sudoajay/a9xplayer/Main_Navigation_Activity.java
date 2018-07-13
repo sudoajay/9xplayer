@@ -110,7 +110,7 @@ public class Main_Navigation_Activity extends AppCompatActivity
             textView_Tittle.setText(R.string.video_title);
             fragment = new Video();
         } else if (id == R.id.nav_Folder) {
-            textView_Tittle.setText(R.string.folder_title);
+            textView_Tittle.setText(R.string.directories_title);
             fragment=new Folder();
         } else if (id == R.id.nav_Playlists) {
             textView_Tittle.setText(R.string.playlist_title);

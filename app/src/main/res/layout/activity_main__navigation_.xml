@@ -11,8 +11,7 @@
     <include
         layout="@layout/app_bar_main__navigation_"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"/>
+        android:layout_height="match_parent" />
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
@@ -20,6 +19,10 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        app:itemIconTint="@color/navigation_item_color"
+        app:itemTextColor="@color/navigation_item_text_color"
+        app:itemBackground="@drawable/navigation_item_background"
+        android:background="@color/navigation_drawer_background"
         app:menu="@menu/activity_main__navigation__drawer" />
 
 </android.support.v4.widget.DrawerLayout>

@@ -51,9 +51,6 @@ public class Main_Navigation_Activity extends AppCompatActivity
         //Get the storage permission
         Storage_Permission();
 
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        getWindow().setStatusBarColor(Color.TRANSPARENT);
-
         navigationView.setTag(0);
         fragment =new Home();
 

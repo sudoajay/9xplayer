@@ -1,10 +1,13 @@
 package com.sudoajay.a9xplayer;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -23,21 +26,15 @@ public class Main_Navigation_Activity extends AppCompatActivity
     private TextView textView_Tittle ;
     private Android_Permission_Required android_permission_required;
     private Grab_The_Data grab_the_music ;
+    private Fragment fragment ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main__navigation_);
-        Toolbar toolbar =  findViewById(R.id.toolbar);
+        Toolbar toolbar =  findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab =  findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         DrawerLayout drawer =  findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -54,9 +51,17 @@ public class Main_Navigation_Activity extends AppCompatActivity
         //Get the storage permission
         Storage_Permission();
 
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
+
+        navigationView.setTag(0);
+        fragment =new Home();
+
+
     }
+
     private void reference(){
-        textView_Tittle = findViewById(R.id.textView_Title);
+     //   textView_Tittle = findViewById(R.id.textView_Title);
 
         // permission object created
         android_permission_required = new Android_Permission_Required(this,this);
@@ -94,26 +99,25 @@ public class Main_Navigation_Activity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
-        // fragment institate
-        Fragment fragment =new Home();
+
 
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         setTitle("");
         if (id == R.id.nav_Home) {
-            textView_Tittle.setText(R.string.home_title);
+   //         textView_Tittle.setText(R.string.home_title);
             fragment = new Home();
         } else if (id == R.id.nav_Music) {
-            textView_Tittle.setText(R.string.music_title);
+   //         textView_Tittle.setText(R.string.music_title);
             fragment = new Music();
         } else if (id == R.id.nav_Video) {
-            textView_Tittle.setText(R.string.video_title);
+   //         textView_Tittle.setText(R.string.video_title);
             fragment = new Video();
         } else if (id == R.id.nav_Folder) {
-            textView_Tittle.setText(R.string.directories_title);
+   //         textView_Tittle.setText(R.string.directories_title);
             fragment=new Folder();
         } else if (id == R.id.nav_Playlists) {
-            textView_Tittle.setText(R.string.playlist_title);
+   //         textView_Tittle.setText(R.string.playlist_title);
             fragment = new Playlist();
         } else if (id == R.id.nav_Setting) {
 

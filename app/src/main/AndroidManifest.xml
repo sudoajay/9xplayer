@@ -19,9 +19,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Main_Navigation_Activity"
-            android:label="@string/title_activity_main__navigation_"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
+            android:theme="@style/AppTheme.TransparentTheme">
+        <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />

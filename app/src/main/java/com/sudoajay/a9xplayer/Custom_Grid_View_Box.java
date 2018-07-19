@@ -10,19 +10,21 @@ import android.widget.TextView;
 
 public class Custom_Grid_View_Box extends BaseAdapter{
     private Context mContext;
-    private final String[] web;
-    private final int[] Imageid;
+    private String[] title,artist;
+    private int[] coverId;
 
-    public Custom_Grid_View_Box(Context c,String[] web,int[] Imageid ) {
+    public Custom_Grid_View_Box(Context c , String[] title , String[] artist ,int[] coverId ) {
         mContext = c;
-        this.Imageid = Imageid;
-        this.web = web;
+        this.title = title;
+        this.artist=artist;
+        this.coverId =coverId;
+
     }
+
 
     @Override
     public int getCount() {
-        // TODO Auto-generated method stub
-        return web.length;
+        return title.length;
     }
 
     @Override
@@ -53,9 +55,14 @@ public class Custom_Grid_View_Box extends BaseAdapter{
             ImageView grid_Cover = grid.findViewById(R.id.grid_Cover);
             ImageView grid_More = grid.findViewById(R.id.grid_More);
 
+            grid_Title_Name.setText(title[position]);
+            grid_Artist_Name.setText(artist[position]);
+            grid_Cover.setImageResource(coverId[position]);
+
+
 
         } else {
-            grid = (View) convertView;
+            grid =  convertView;
         }
 
         return grid;

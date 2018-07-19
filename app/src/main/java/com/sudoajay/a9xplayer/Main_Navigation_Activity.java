@@ -51,9 +51,10 @@ public class Main_Navigation_Activity extends AppCompatActivity
         //Get the storage permission
         Storage_Permission();
 
-        navigationView.setTag(0);
-        fragment =new Home();
-
+        // Default Fragment
+        Home home = new Home();
+        fragment =home.createInstance(this);
+        Replace_Fragments();
 
     }
 
@@ -103,7 +104,8 @@ public class Main_Navigation_Activity extends AppCompatActivity
         setTitle("");
         if (id == R.id.nav_Home) {
    //         textView_Tittle.setText(R.string.home_title);
-            fragment = new Home();
+           Home home = new Home();
+            fragment =home.createInstance(this);
         } else if (id == R.id.nav_Music) {
    //         textView_Tittle.setText(R.string.music_title);
             fragment = new Music();
@@ -123,11 +125,7 @@ public class Main_Navigation_Activity extends AppCompatActivity
         }
 
 
-        if (fragment != null) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.frame_Layout, fragment);
-            ft.commit();
-        }
+        Replace_Fragments();
 
         DrawerLayout drawer =  findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -137,5 +135,15 @@ public class Main_Navigation_Activity extends AppCompatActivity
         // storage permission check
         if(!android_permission_required.isExternalStorageWritable())
             android_permission_required.call_Thread();
+    }
+
+    // Replace Fragments
+    public void Replace_Fragments(){
+
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frame_Layout, fragment);
+            ft.commit();
+        }
     }
 }

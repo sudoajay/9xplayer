@@ -88,17 +88,17 @@ public class Home extends Fragment {
 
         Custom_Grid_View_Box adapter = new Custom_Grid_View_Box(main_navigation_activity
         , title,artist,coverId);
-        grid = view.findViewById(R.id.grid);
-        grid.setAdapter(adapter);
-        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Toast.makeText(main_navigation_activity, "You Clicked at " + position, Toast.LENGTH_SHORT).show();
-
-            }
-        });
+//        grid = view.findViewById(R.id.grid);
+//        grid.setAdapter(adapter);
+//        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view,
+//                                    int position, long id) {
+//                Toast.makeText(main_navigation_activity, "You Clicked at " + position, Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
 
 
         return view;

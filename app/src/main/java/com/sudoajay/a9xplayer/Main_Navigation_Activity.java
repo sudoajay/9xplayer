@@ -3,6 +3,9 @@ package com.sudoajay.a9xplayer;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -29,13 +32,12 @@ public class Main_Navigation_Activity extends AppCompatActivity
     private Android_Permission_Required android_permission_required;
     private Grab_The_Data grab_the_music ;
     private Fragment fragment ;
+    private AppBarLayout main_appbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        }
+
         setContentView(R.layout.activity_main__navigation_);
         changeStatusBarColor();
         Toolbar toolbar =  findViewById(R.id.main_toolbar);
@@ -66,7 +68,9 @@ public class Main_Navigation_Activity extends AppCompatActivity
     }
 
     private void reference(){
-     //   textView_Tittle = findViewById(R.id.textView_Title);
+        textView_Tittle = findViewById(R.id.textView_Title);
+        main_appbar = findViewById(R.id.main_appbar);
+
 
         // permission object created
         android_permission_required = new Android_Permission_Required(this,this);
@@ -115,21 +119,31 @@ public class Main_Navigation_Activity extends AppCompatActivity
         int id = item.getItemId();
         setTitle("");
         if (id == R.id.nav_Home) {
-   //         textView_Tittle.setText(R.string.home_title);
+            textView_Tittle.setText(R.string.home_title);
+            main_appbar.setExpanded(true);
            Home home = new Home();
+            unlockAppBarOpen();
             fragment =home.createInstance(this);
         } else if (id == R.id.nav_Music) {
-   //         textView_Tittle.setText(R.string.music_title);
+            textView_Tittle.setText(R.string.music_title);
+            main_appbar.setExpanded(false);
             fragment = new Music();
+            lockAppBarClosed();
         } else if (id == R.id.nav_Video) {
-   //         textView_Tittle.setText(R.string.video_title);
+            textView_Tittle.setText(R.string.video_title);
+            main_appbar.setExpanded(false);
             fragment = new Video();
+            lockAppBarClosed();
         } else if (id == R.id.nav_Folder) {
-   //         textView_Tittle.setText(R.string.directories_title);
+            textView_Tittle.setText(R.string.directories_title);
+            main_appbar.setExpanded(false);
             fragment=new Folder();
+            lockAppBarClosed();
         } else if (id == R.id.nav_Playlists) {
-   //         textView_Tittle.setText(R.string.playlist_title);
+            textView_Tittle.setText(R.string.playlist_title);
+            main_appbar.setExpanded(false);
             fragment = new Playlist();
+            lockAppBarClosed();
         } else if (id == R.id.nav_Setting) {
 
         }else if (id == R.id.nav_Rate_Us) {
@@ -157,5 +171,18 @@ public class Main_Navigation_Activity extends AppCompatActivity
             ft.replace(R.id.frame_Layout, fragment);
             ft.commit();
         }
+    }
+    public void lockAppBarClosed() {
+        main_appbar.setExpanded(false, false);
+        main_appbar.setActivated(false);
+        CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams)main_appbar.getLayoutParams();
+        lp.height = (int) getResources().getDimension(R.dimen.toolbar_Height);
+    }
+
+    public void unlockAppBarOpen() {
+        main_appbar.setExpanded(true, false);
+        main_appbar.setActivated(true);
+        CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams)main_appbar.getLayoutParams();
+        lp.height = (int) getResources().getDimension(R.dimen.toolbar_Height);
     }
 }

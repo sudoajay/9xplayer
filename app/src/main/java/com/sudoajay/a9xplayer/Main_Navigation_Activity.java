@@ -18,6 +18,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 public class Main_Navigation_Activity extends AppCompatActivity
@@ -30,7 +32,12 @@ public class Main_Navigation_Activity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        }
         setContentView(R.layout.activity_main__navigation_);
+        changeStatusBarColor();
         Toolbar toolbar =  findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
 
@@ -66,11 +73,16 @@ public class Main_Navigation_Activity extends AppCompatActivity
 
         // grab The Data
         grab_the_music = new Grab_The_Data(this);
-
-
-
-
     }
+
+    private void changeStatusBarColor() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+        }
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer =  findViewById(R.id.drawer_layout);

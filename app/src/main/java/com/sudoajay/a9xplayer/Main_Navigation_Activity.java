@@ -11,7 +11,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.NestedScrollView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,8 +23,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Main_Navigation_Activity extends AppCompatActivity
@@ -31,8 +35,12 @@ public class Main_Navigation_Activity extends AppCompatActivity
     private TextView textView_Tittle ;
     private Android_Permission_Required android_permission_required;
     private Grab_The_Data grab_the_music ;
+    private ImageView backdrop ;
     private Fragment fragment ;
     private AppBarLayout main_appbar;
+    private Toolbar main_toolbar;
+    private CollapsingToolbarLayout main_collapsing;
+    private CoordinatorLayout main_CoordinatorLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,14 +48,14 @@ public class Main_Navigation_Activity extends AppCompatActivity
 
         setContentView(R.layout.activity_main__navigation_);
         changeStatusBarColor();
-        Toolbar toolbar =  findViewById(R.id.main_toolbar);
-        setSupportActionBar(toolbar);
+         main_toolbar =  findViewById(R.id.main_toolbar);
+        setSupportActionBar(main_toolbar);
 
 
 
         DrawerLayout drawer =  findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, main_toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -65,12 +73,17 @@ public class Main_Navigation_Activity extends AppCompatActivity
         fragment =home.createInstance(this);
         Replace_Fragments();
 
+
+
+
     }
 
     private void reference(){
         textView_Tittle = findViewById(R.id.textView_Title);
         main_appbar = findViewById(R.id.main_appbar);
-
+        main_collapsing = findViewById(R.id.main_collapsing);
+        main_CoordinatorLayout =findViewById(R.id.main_CoordinatorLayout);
+        backdrop= findViewById(R.id.backdrop);
 
         // permission object created
         android_permission_required = new Android_Permission_Required(this,this);
@@ -112,38 +125,38 @@ public class Main_Navigation_Activity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-
-
-
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         setTitle("");
         if (id == R.id.nav_Home) {
             textView_Tittle.setText(R.string.home_title);
-            main_appbar.setExpanded(true);
+            main_appbar.setExpanded(true,true);
            Home home = new Home();
-            unlockAppBarOpen();
             fragment =home.createInstance(this);
+            backdrop.setVisibility(View.VISIBLE);
         } else if (id == R.id.nav_Music) {
-            textView_Tittle.setText(R.string.music_title);
-            main_appbar.setExpanded(false);
-            fragment = new Music();
-            lockAppBarClosed();
+                textView_Tittle.setText(R.string.music_title);
+                fragment = new Music();
+                main_appbar.setExpanded(true,true);
+                backdrop.setVisibility(View.GONE);
         } else if (id == R.id.nav_Video) {
             textView_Tittle.setText(R.string.video_title);
-            main_appbar.setExpanded(false);
+            main_appbar.setExpanded(true,true);
+            backdrop.setVisibility(View.GONE);
             fragment = new Video();
-            lockAppBarClosed();
+
         } else if (id == R.id.nav_Folder) {
             textView_Tittle.setText(R.string.directories_title);
-            main_appbar.setExpanded(false);
+            main_appbar.setExpanded(true,true);
+            backdrop.setVisibility(View.GONE);
             fragment=new Folder();
-            lockAppBarClosed();
+
         } else if (id == R.id.nav_Playlists) {
-            textView_Tittle.setText(R.string.playlist_title);
-            main_appbar.setExpanded(false);
+
+            main_appbar.setExpanded(true,true);
+            backdrop.setVisibility(View.GONE);
             fragment = new Playlist();
-            lockAppBarClosed();
+
         } else if (id == R.id.nav_Setting) {
 
         }else if (id == R.id.nav_Rate_Us) {
@@ -172,17 +185,5 @@ public class Main_Navigation_Activity extends AppCompatActivity
             ft.commit();
         }
     }
-    public void lockAppBarClosed() {
-        main_appbar.setExpanded(false, false);
-        main_appbar.setActivated(false);
-        CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams)main_appbar.getLayoutParams();
-        lp.height = (int) getResources().getDimension(R.dimen.toolbar_Height);
-    }
 
-    public void unlockAppBarOpen() {
-        main_appbar.setExpanded(true, false);
-        main_appbar.setActivated(true);
-        CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams)main_appbar.getLayoutParams();
-        lp.height = (int) getResources().getDimension(R.dimen.toolbar_Height);
-    }
 }

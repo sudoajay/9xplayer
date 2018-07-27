@@ -2,9 +2,14 @@ package com.sudoajay.a9xplayer;
 
 
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.NestedScrollView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +39,7 @@ public class Music extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.activity_music_, container, false);
+
         music_Tab_Layout =view.findViewById(R.id.music_Tab_Layout);
         music_View_Pager = view.findViewById(R.id.music_View_Pager);
 
@@ -48,6 +54,8 @@ public class Music extends Fragment {
 
         // tablayout connect with viewpager
         music_Tab_Layout.setupWithViewPager(music_View_Pager);
+
+
 
         return view;
 

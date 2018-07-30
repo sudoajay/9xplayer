@@ -15,4 +15,8 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Toolbar_Colored_Home_Arrow" parent="AppTheme">
+        <item name="android:textColorSecondary">#fff</item>
+    </style>
 </resources>

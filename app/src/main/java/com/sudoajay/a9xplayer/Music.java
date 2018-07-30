@@ -1,6 +1,9 @@
 package com.sudoajay.a9xplayer;
 
 
+import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
@@ -10,9 +13,12 @@ import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 
 
 /**
@@ -28,16 +34,31 @@ public class Music extends Fragment {
     private Music_Album_Page  music_album_page = new Music_Album_Page();
     private Playlist_Page music_playlist_page = new Playlist_Page();
     private Music_Artist_page music_artist_page = new Music_Artist_page();
+    private Main_Navigation_Activity main_navigation_activity;
 
     public Music() {
         // Required empty public constructor
     }
-
+    public Music createInstance(Main_Navigation_Activity main_navigation_activity  ) {
+        this.main_navigation_activity = main_navigation_activity;
+        return this;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = main_navigation_activity.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
+        }
+
+
+        // clone the inflater using the ContextThemeWrapper
+
+
         View view = inflater.inflate(R.layout.activity_music_, container, false);
 
         music_Tab_Layout =view.findViewById(R.id.music_Tab_Layout);

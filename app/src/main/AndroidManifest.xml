@@ -18,8 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Main_Navigation_Activity"
-            android:theme="@style/AppTheme.TransparentTheme">
+            android:name=".Main_Navigation_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

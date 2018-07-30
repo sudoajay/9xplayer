@@ -10,6 +10,7 @@
 
     <include
         layout="@layout/app_bar_main__navigation_"
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -24,6 +25,10 @@
         app:itemTextColor="@color/navigation_item_text_color"
         app:itemBackground="@drawable/navigation_item_background"
         android:background="@color/navigation_drawer_background"
-        app:menu="@menu/activity_main__navigation__drawer" />
+        app:menu="@menu/activity_main__navigation__drawer" >
+
+
+    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>
+

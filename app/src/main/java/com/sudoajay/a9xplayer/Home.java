@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.NestedScrollView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ public class Home extends Fragment {
     private View view;
     private GridView grid,grid2;
     private Main_Navigation_Activity main_navigation_activity;
+    private NestedScrollView inside_Nested_Scroll_View;
     String[] title = {
             "Ajay",
             "Vijay",
@@ -83,6 +85,9 @@ public class Home extends Fragment {
         // making notification bar transparent
 
         view = inflater.inflate(R.layout.activity_home, container, false);
+        changeStatusBarColor();
+        inside_Nested_Scroll_View = view.findViewById(R.id.inside_Nested_Scroll_View);
+        inside_Nested_Scroll_View.setNestedScrollingEnabled(false);
 
 //        Custom_Grid_View_Box adapter = new Custom_Grid_View_Box(main_navigation_activity
 //        , title,artist,coverId);
@@ -102,5 +107,11 @@ public class Home extends Fragment {
         return view;
     }
 
-
+    private void changeStatusBarColor() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = main_navigation_activity.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+        }
+    }
 }

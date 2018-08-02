@@ -19,7 +19,7 @@ public class Video extends Fragment {
     private TabLayout music_Tab_Layout;
     private ViewPager music_View_Pager;
     private Tab_Page_Adapter tab_page_adapter;
-    private Song_Video_Page songVideo_page = new Song_Video_Page();
+    private Music_Video_Song_Page songVideo_page = new Music_Video_Song_Page();
     private Playlist_Page music_playlist_page = new Playlist_Page();
 
     public Video() {

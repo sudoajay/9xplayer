@@ -1,19 +1,11 @@
 package com.sudoajay.a9xplayer;
 
 
-import android.content.Context;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.NestedScrollView;
-import android.util.Log;
-import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +22,7 @@ public class Music extends Fragment {
     private TabLayout music_Tab_Layout;
     private ViewPager music_View_Pager;
     private Tab_Page_Adapter tab_page_adapter;
-    private Song_Video_Page songVideo_page = new Song_Video_Page();
+    private Music_Video_Song_Page songVideo_page = new Music_Video_Song_Page();
     private Music_Album_Page  music_album_page = new Music_Album_Page();
     private Playlist_Page music_playlist_page = new Playlist_Page();
     private Music_Artist_page music_artist_page = new Music_Artist_page();

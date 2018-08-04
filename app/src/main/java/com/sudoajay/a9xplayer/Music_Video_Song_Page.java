@@ -14,6 +14,7 @@ import android.view.ViewGroup;
  */
 public class Music_Video_Song_Page extends Fragment {
 
+    private NestedScrollView inside_Nested_Scroll_View;
 
 
     public Music_Video_Song_Page() {
@@ -30,7 +31,8 @@ public class Music_Video_Song_Page extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.activity_music__songs__page, container, false);
-
+        inside_Nested_Scroll_View = view.findViewById(R.id.inside_Nested_Scroll_View);
+        
 
 
         return view;

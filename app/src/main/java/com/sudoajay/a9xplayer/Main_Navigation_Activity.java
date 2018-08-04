@@ -30,7 +30,9 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.FrameLayout;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +48,19 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
     private CollapsingToolbarLayout main_collapsing;
     private ImageView main_Back_Image;
     private NestedScrollView nested_Scroll_View;
+    String[] title = {
+            "Ajay",
+            "Vijay",
+            "Maxo"} ;
+    String[] artist = {
+            "Ajayas",
+            "Vijayasd",
+            "Maxoasd"} ;
+    int[] coverId = {
+            R.drawable.click_something,
+            R.drawable.home,
+            R.drawable.folder,
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +141,9 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
             }
         });
 
+        // create Grid view soo boxes appear in grid view
+        Create_Grid_View();
+
     }
 
 
@@ -193,18 +211,20 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
             fragment =home.createInstance(Main_Navigation_Activity.this);
             main_Back_Image.setVisibility(View.VISIBLE);
             main_toolbar.setBackgroundColor(Color.TRANSPARENT);
-            main_AppbarLayout.setExpanded(true,false);
+            nested_Scroll_View.setNestedScrollingEnabled(true);
         } else if (id == R.id.nav_Music) {
                textView_Tittle.setText(R.string.music_title);
                 Music music = new Music();
                 fragment = music.createInstance(Main_Navigation_Activity.this);
                 main_Back_Image.setVisibility(View.GONE);
             main_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-            main_AppbarLayout.setExpanded(false,false);
-            
+            nested_Scroll_View.setNestedScrollingEnabled(false);
         } else if (id == R.id.nav_Video) {
            textView_Tittle.setText(R.string.video_title);
             fragment = new Video();
+            main_Back_Image.setVisibility(View.GONE);
+            main_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            nested_Scroll_View.setNestedScrollingEnabled(false);
         } else if (id == R.id.nav_Folder) {
             textView_Tittle.setText(R.string.directories_title);
             fragment=new Folder();
@@ -251,6 +271,22 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+
+    public void Create_Grid_View(){
+        Custom_Grid_View_Box adapter = new Custom_Grid_View_Box(this
+        , title,artist,coverId);
+       GridView grid = findViewById(R.id.grid_View1);
+        grid.setAdapter(adapter);
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Toast.makeText(Main_Navigation_Activity.this, "You Clicked at " + position, Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 
 }

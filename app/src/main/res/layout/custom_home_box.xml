@@ -2,74 +2,98 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:id="@+id/content"
+    android:layout_width="130dp"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="5dp"
-    android:layout_marginTop="5dp"
-    android:background="@drawable/shadow_effect_more"
-    android:paddingBottom="20dp"
-    android:paddingLeft="8dp"
-    android:paddingRight="13dp"
-    android:paddingTop="5dp">
+    android:layout_marginLeft="0dp"
+
+    android:layout_marginTop="0dp">
 
     <ImageView
         android:id="@+id/grid_Cover"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="5dp"
+        android:layout_width="0dp"
+        android:layout_height="112dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.068"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/home" />
 
-    <TextView
-        android:id="@+id/grid_Title_Name"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="5dp"
-        android:paddingLeft="4dp"
-        android:text="How Long"
-        android:textColor="#df000000"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/grid_Artist_Name"
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_marginRight="2dp"
+        android:background="@drawable/shadow_effect_more"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/grid_Cover"
-        app:layout_constraintVertical_bias="0.909" />
+        app:layout_constraintVertical_bias="0.0">
 
-    <TextView
-        android:id="@+id/grid_Artist_Name"
-        android:layout_width="75dp"
-        android:layout_height="18dp"
-        android:layout_marginBottom="5dp"
-        android:text="Charlie Putt"
-        android:textColor="#95000000"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.32"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grid_Title_Name" />
+        <com.jgabrielfreitas.core.BlurImageView
+            android:id="@+id/dogBlurImageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/home"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:radius="24" />
 
-    <ImageView
-        android:id="@+id/grid_More"
-        android:layout_width="30dp"
-        android:layout_height="40dp"
-        android:paddingBottom="5dp"
-        android:paddingLeft="9dp"
-        android:paddingRight="1dp"
-        android:paddingTop="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.989"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.978"
-        app:srcCompat="@drawable/dot_more" />
+        <TextView
+            android:id="@+id/grid_Title_Name"
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:paddingLeft="4dp"
+            android:text="How Long"
+            android:textColor="#df000000"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.27"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.22000003" />
 
+
+        <TextView
+            android:id="@+id/grid_Artist_Name"
+            android:layout_width="75dp"
+            android:layout_height="18dp"
+            android:layout_marginBottom="5dp"
+            android:text="Charlie Putt"
+            android:textColor="#95000000"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.29"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/grid_Title_Name"
+            app:layout_constraintVertical_bias="0.110000014" />
+
+        <ImageView
+            android:id="@+id/grid_More"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="9dp"
+            android:paddingRight="1dp"
+            android:paddingTop="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.83"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.42000002"
+            app:srcCompat="@drawable/dot_more" />
+    </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

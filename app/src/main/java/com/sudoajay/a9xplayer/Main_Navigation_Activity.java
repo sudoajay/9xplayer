@@ -57,9 +57,9 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
             "Vijayasd",
             "Maxoasd"} ;
     int[] coverId = {
-            R.drawable.click_something,
-            R.drawable.home,
-            R.drawable.folder,
+            R.drawable.cover1,
+            R.drawable.cover2,
+            R.drawable.cover1,
     };
 
     @Override

@@ -1,12 +1,10 @@
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#232323"
-    android:fitsSystemWindows="true"
-    >
+    android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/main_appbar"
@@ -19,30 +17,32 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/main_collapsing"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="570dp"
             android:fitsSystemWindows="true"
             app:contentScrim="@android:color/transparent"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fitsSystemWindows="true">
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:paddingBottom="5dp">
 
 
                 <ImageView
                     android:id="@+id/main_Back_Image"
                     android:layout_width="match_parent"
-                    android:layout_height="500dp"
+                    android:layout_height="496dp"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
                     android:src="@drawable/images"
                     app:layout_collapseMode="parallax"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
 
                 </ImageView>
 
@@ -59,97 +59,102 @@
                     app:layout_constraintHorizontal_bias="0.059"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.674" />
+                    app:layout_constraintVertical_bias="0.631" />
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorPrimary"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingTop="5dp"
+                <Button
+                    android:id="@+id/changes_Button"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="49dp"
+                    android:layout_height="28dp"
+                    android:layout_marginEnd="24dp"
+                    android:alpha="1"
+                    android:background="@drawable/activity_my_more_button"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:onClick="On_Click_Process"
                     android:text="Open"
+                    android:textAllCaps="false"
                     android:textColor="#fff"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.95"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="0.944"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.668" />
+                    app:layout_constraintVertical_bias="0.632" />
 
                 <GridView
                     android:id="@+id/grid_View1"
                     android:layout_width="0dp"
-                    android:layout_height="120dp"
+                    android:layout_height="180dp"
                     android:columnWidth="90dp"
                     android:gravity="center"
-                    android:horizontalSpacing="10dp"
+                    android:horizontalSpacing="5dp"
                     android:numColumns="auto_fit"
                     android:stretchMode="columnWidth"
-                    android:verticalSpacing="10dp"
+                    android:verticalSpacing="0.5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.932" />
+                    app:layout_constraintVertical_bias="1.0" />
 
             </android.support.constraint.ConstraintLayout>
-                <android.support.v7.widget.Toolbar
-                    android:id="@+id/main.toolbar"
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/main.toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+                <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    app:layout_collapseMode="pin"
+                    android:layout_height="match_parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0">
 
-                    <android.support.constraint.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+
+                    <TextView
+                        android:id="@+id/textView_Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text="Home"
+                        android:textColor="#fff"
+                        android:textSize="22sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintHorizontal_bias="0.055"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:background="@android:color/transparent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0">
-
-
-                        <TextView
-                            android:id="@+id/textView_Title"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif"
-                            android:text="Home"
-                            android:textColor="#fff"
-                            android:textSize="22sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.055"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageButton
-                            android:id="@+id/imageButton"
-                            android:layout_width="60dp"
-                            android:layout_height="50dp"
-                            android:background="@android:color/transparent"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="1.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/search" />
-                    </android.support.constraint.ConstraintLayout>
-                </android.support.v7.widget.Toolbar>
+                        app:srcCompat="@drawable/search" />
+                </android.support.constraint.ConstraintLayout>
+            </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
+
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/nested_Scroll_View"
         android:layout_width="match_parent"

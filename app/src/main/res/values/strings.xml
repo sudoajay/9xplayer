@@ -26,6 +26,12 @@
     <string name="directories_title">Directories</string>
     <string name="playlist_title">Playlist</string>
 
+    <string name="recently_played_heading">Recently Played</string>
+    <string name="most_played_heading">Most Played</string>
+    <string name="recently_added_heading">Recently Added</string>
+    <string name="play_queue_heading">Play Queue</string>
+    <string name="more_button">More</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

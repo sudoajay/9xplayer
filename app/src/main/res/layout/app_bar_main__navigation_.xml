@@ -47,46 +47,45 @@
                 </ImageView>
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/text_Heading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:fontFamily="serif"
-                    android:text="Most Played"
+                    android:text="@string/recently_played_heading"
                     android:textColor="#fff"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.059"
+                    app:layout_constraintEnd_toStartOf="@+id/changes_Button"
+                    app:layout_constraintHorizontal_bias="0.083"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.631" />
+                    app:layout_constraintVertical_bias="0.581" />
 
                 <Button
-                    android:id="@+id/changes_Button"
+                    android:id="@+id/more_Button"
                     style="@style/Widget.AppCompat.Button"
-                    android:layout_width="49dp"
-                    android:layout_height="28dp"
-                    android:layout_marginEnd="24dp"
-                    android:alpha="1"
+                    android:layout_width="52dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="16dp"
                     android:background="@drawable/activity_my_more_button"
                     android:fontFamily="sans-serif-smallcaps"
-                    android:onClick="On_Click_Process"
-                    android:text="Open"
+                    android:text="@string/more_button"
                     android:textAllCaps="false"
                     android:textColor="#fff"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.944"
+                    app:layout_constraintHorizontal_bias="0.52"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.632" />
+                    app:layout_constraintVertical_bias="0.583" />
 
                 <GridView
-                    android:id="@+id/grid_View1"
+                    android:id="@+id/grid_View"
                     android:layout_width="0dp"
-                    android:layout_height="180dp"
+                    android:layout_height="200dp"
                     android:columnWidth="90dp"
                     android:gravity="center"
                     android:horizontalSpacing="5dp"
@@ -95,7 +94,7 @@
                     android:verticalSpacing="0.5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0" />
@@ -105,7 +104,7 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/main.toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="@dimen/toolbar_Height"
                 app:layout_collapseMode="pin"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -130,7 +129,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif"
-                        android:text="Home"
+                        android:text="@string/home_title"
                         android:textColor="#fff"
                         android:textSize="22sp"
                         app:layout_constraintBottom_toBottomOf="parent"

@@ -31,6 +31,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -48,6 +49,9 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
     private CollapsingToolbarLayout main_collapsing;
     private ImageView main_Back_Image;
     private NestedScrollView nested_Scroll_View;
+    private Button more_Button;
+    private TextView text_Heading;
+    private GridView grid_View;
     String[] title = {
             "Ajay",
             "Vijay",
@@ -188,6 +192,10 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
             main_AppbarLayout = findViewById(R.id.main_appbar);
             main_Back_Image = findViewById(R.id.main_Back_Image);
             nested_Scroll_View=findViewById(R.id.nested_Scroll_View);
+            grid_View =findViewById(R.id.grid_View);
+            more_Button = findViewById(R.id.more_Button);
+            text_Heading=findViewById(R.id.text_Heading);
+
 
             // permission object created
             android_permission_required = new Android_Permission_Required(this, this);
@@ -207,29 +215,29 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
 
         if (id == R.id.nav_Home) {
             textView_Tittle.setText(R.string.home_title);
-           Home home = new Home();
+            Home home = new Home();
             fragment =home.createInstance(Main_Navigation_Activity.this);
-            main_Back_Image.setVisibility(View.VISIBLE);
+            Turn_Of_On(true);
             main_toolbar.setBackgroundColor(Color.TRANSPARENT);
             nested_Scroll_View.setNestedScrollingEnabled(true);
         } else if (id == R.id.nav_Music) {
                textView_Tittle.setText(R.string.music_title);
-                Music music = new Music();
-                fragment = music.createInstance(Main_Navigation_Activity.this);
-                main_Back_Image.setVisibility(View.GONE);
-            main_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-            nested_Scroll_View.setNestedScrollingEnabled(false);
+               Music music = new Music();
+               Turn_Of_On(false);
+               fragment = music.createInstance(Main_Navigation_Activity.this);
+               main_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+               nested_Scroll_View.setNestedScrollingEnabled(false);
         } else if (id == R.id.nav_Video) {
-           textView_Tittle.setText(R.string.video_title);
-            fragment = new Video();
-            main_Back_Image.setVisibility(View.GONE);
-            main_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-            nested_Scroll_View.setNestedScrollingEnabled(false);
+                textView_Tittle.setText(R.string.video_title);
+                fragment = new Video();
+                Turn_Of_On(false);
+                main_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                nested_Scroll_View.setNestedScrollingEnabled(false);
         } else if (id == R.id.nav_Folder) {
-            textView_Tittle.setText(R.string.directories_title);
-            fragment=new Folder();
+                textView_Tittle.setText(R.string.directories_title);
+                fragment=new Folder();
         } else if (id == R.id.nav_Playlists) {
-            fragment = new Playlist();
+                fragment = new Playlist();
 
         } else if (id == R.id.nav_Setting) {
 
@@ -258,15 +266,7 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
             ft.commit();
         }
     }
-        public int Convert_pixel_To_Dp(int dp){
-            Resources r = getApplicationContext().getResources();
-            int px = (int) TypedValue.applyDimension(
-                    TypedValue.COMPLEX_UNIT_DIP,
-                    dp,
-                    r.getDisplayMetrics()
-            );
-            return px;
-        }
+
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
@@ -276,9 +276,9 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
     public void Create_Grid_View(){
         Custom_Grid_View_Box adapter = new Custom_Grid_View_Box(this
         , title,artist,coverId);
-       GridView grid = findViewById(R.id.grid_View1);
-        grid.setAdapter(adapter);
-        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        grid_View.setAdapter(adapter);
+        grid_View.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
@@ -288,5 +288,18 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
             }
         });
     }
-
+    // turn off and on all element of Collopslayout
+    private void Turn_Of_On(boolean visible){
+        if(visible){
+            main_Back_Image.setVisibility(View.VISIBLE);
+            grid_View.setVisibility(View.VISIBLE);
+            text_Heading.setVisibility(View.VISIBLE);
+            more_Button.setVisibility(View.VISIBLE);
+        }else{
+            main_Back_Image.setVisibility(View.GONE);
+            grid_View.setVisibility(View.GONE);
+            text_Heading.setVisibility(View.GONE);
+            more_Button.setVisibility(View.GONE);
+        }
+    }
 }

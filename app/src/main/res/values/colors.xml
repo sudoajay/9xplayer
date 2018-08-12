@@ -6,5 +6,5 @@
     <color name="navigation_drawer_background">#d9252525</color>
     <color name="navigation_item_background_on_clicked">#868484</color>
     <color name="navigation_item_color">#be000000</color>
-    <color name="navigation_item_text_color">#61ffffff</color>
+    <color name="navigation_item_text_color">#FF6B6666</color>
 </resources>

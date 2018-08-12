@@ -52,12 +52,13 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
     private Button more_Button;
     private TextView text_Heading;
     private GridView grid_View;
+    private ConstraintLayout inside_Constraint_layout;
     String[] title = {
-            "Ajay",
+            "Selfie",
             "Vijay",
             "Maxo"} ;
     String[] artist = {
-            "Ajayas",
+            "ChainsSmoker",
             "Vijayasd",
             "Maxoasd"} ;
     int[] coverId = {
@@ -195,7 +196,7 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
             grid_View =findViewById(R.id.grid_View);
             more_Button = findViewById(R.id.more_Button);
             text_Heading=findViewById(R.id.text_Heading);
-
+            inside_Constraint_layout = findViewById(R.id.inside_Constraint_layout);
 
             // permission object created
             android_permission_required = new Android_Permission_Required(this, this);
@@ -295,11 +296,13 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
             grid_View.setVisibility(View.VISIBLE);
             text_Heading.setVisibility(View.VISIBLE);
             more_Button.setVisibility(View.VISIBLE);
+            inside_Constraint_layout.setVisibility(View.VISIBLE);
         }else{
             main_Back_Image.setVisibility(View.GONE);
             grid_View.setVisibility(View.GONE);
             text_Heading.setVisibility(View.GONE);
             more_Button.setVisibility(View.GONE);
+            inside_Constraint_layout.setVisibility(View.GONE);
         }
     }
 }

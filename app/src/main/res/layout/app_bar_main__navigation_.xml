@@ -17,14 +17,15 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/main_collapsing"
             android:layout_width="match_parent"
-            android:layout_height="570dp"
+            android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
             app:contentScrim="@android:color/transparent"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
 
             <android.support.constraint.ConstraintLayout
+                android:id="@+id/inside_Constraint_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="550dp"
                 android:fitsSystemWindows="true"
                 android:paddingBottom="5dp">
 
@@ -51,6 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
                     android:fontFamily="serif"
                     android:text="@string/recently_played_heading"
                     android:textColor="#fff"
@@ -60,7 +62,7 @@
                     app:layout_constraintHorizontal_bias="0.083"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.581" />
+                    app:layout_constraintVertical_bias="0.558" />
 
                 <Button
                     android:id="@+id/more_Button"
@@ -80,7 +82,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.583" />
+                    app:layout_constraintVertical_bias="0.557" />
 
                 <GridView
                     android:id="@+id/grid_View"
@@ -94,7 +96,7 @@
                     android:verticalSpacing="0.5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0" />
@@ -160,12 +162,13 @@
         android:layout_height="match_parent"
         android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-
         <include
             layout="@layout/content_main__navigation_"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
+
     </android.support.v4.widget.NestedScrollView>
+
+
 
 </android.support.design.widget.CoordinatorLayout>

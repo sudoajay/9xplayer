@@ -3,9 +3,8 @@ package com.sudoajay.a9xplayer;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.graphics.Palette;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +12,15 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Custom_Grid_View_Box extends BaseAdapter{
     private Context mContext;
     private String[] title,artist;
     private int[] coverId;
+    private List<Palette.Swatch> swatchesList = new ArrayList<>();
     private ConstraintLayout contraints_view;
 
     public Custom_Grid_View_Box(Context c , String[] title , String[] artist ,int[] coverId ) {
@@ -62,17 +64,30 @@ public class Custom_Grid_View_Box extends BaseAdapter{
             TextView grid_Artist_Name = grid.findViewById(R.id.grid_Artist_Name);
             ImageView grid_Cover = grid.findViewById(R.id.grid_Cover);
             ImageView grid_More = grid.findViewById(R.id.grid_More);
-            ImageView blur_Image_View = grid.findViewById(R.id.blur_Image_View);
+            final ImageView blur_Image_View = grid.findViewById(R.id.blur_Image_View);
 
 
             grid_Title_Name.setText(title[position]);
             grid_Artist_Name.setText(artist[position]);
-            grid_Cover.setImageResource(coverId[position]);
 
+           GlideApp.with(mContext).asBitmap().load(coverId[position]).into(grid_Cover);
 
-            Bitmap resultBmp = BlurBuilder.blur(mContext, BitmapFactory.decodeResource(mContext.getResources(), coverId[position]));
-            blur_Image_View.setImageBitmap(resultBmp);
-            blur_Image_View.setColorFilter(Color.parseColor("#FF6B6666"), PorterDuff.Mode.DARKEN);
+            Palette.PaletteAsyncListener paletteListener = new Palette.PaletteAsyncListener() {
+                public void onGenerated(Palette palette) {
+                    // access palette colors here
+
+                    Palette.Swatch swatch = palette.getDarkVibrantSwatch();
+                    if(swatch != null)
+                    blur_Image_View.setBackgroundColor(swatch.getRgb());
+
+                }
+            };
+
+            Bitmap myBitmap = BitmapFactory.decodeResource(mContext.getResources(), coverId[position]);
+            if (myBitmap != null && !myBitmap.isRecycled()) {
+                Palette.from(myBitmap).generate(paletteListener);
+            }
+
 
         } else {
             grid =  convertView;

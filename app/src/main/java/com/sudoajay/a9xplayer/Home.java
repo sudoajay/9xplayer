@@ -19,49 +19,21 @@ import android.widget.Toast;
 public class Home extends Fragment {
 
     private View view;
-    private GridView grid,grid2;
+    private GridView grid_View2,grid_View3;
     private Main_Navigation_Activity main_navigation_activity;
     private NestedScrollView inside_Nested_Scroll_View;
     String[] title = {
             "Ajay",
             "Vijay",
-            "Maxo","Ajay",
-            "Vijay",
-            "Maxo","Ajay",
-            "Vijay",
-            "Maxo","Ajay",
-            "Vijay",
-            "Maxo","Ajay",
-            "Vijay",
             "Maxo"} ;
     String[] artist = {
             "Ajayas",
             "Vijayasd",
-            "Maxoasd","Ajayas",
-            "Vijayasd",
-            "Maxoasd","Ajayas",
-            "Vijayasd",
-            "Maxoasd","Ajayas",
-            "Vijayasd",
-            "Maxoasd","Ajayas",
-            "Vijayasd",
             "Maxoasd"} ;
     int[] coverId = {
-            R.drawable.click_something,
-            R.drawable.home,
-            R.drawable.folder,
-            R.drawable.click_something,
-            R.drawable.home,
-            R.drawable.folder,
-            R.drawable.click_something,
-            R.drawable.home,
-            R.drawable.folder,
-            R.drawable.click_something,
-            R.drawable.home,
-            R.drawable.folder,
-            R.drawable.click_something,
-            R.drawable.home,
-            R.drawable.folder
+            R.drawable.cover1,
+            R.drawable.cover2,
+            R.drawable.cover1,
     };
 
     public Home() {
@@ -89,20 +61,32 @@ public class Home extends Fragment {
         inside_Nested_Scroll_View = view.findViewById(R.id.inside_Nested_Scroll_View);
         inside_Nested_Scroll_View.setNestedScrollingEnabled(false);
 
-//        Custom_Grid_View_Box adapter = new Custom_Grid_View_Box(main_navigation_activity
-//        , title,artist,coverId);
-//        grid = view.findViewById(R.id.grid);
-//        grid.setAdapter(adapter);
-//        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view,
-//                                    int position, long id) {
-//                Toast.makeText(main_navigation_activity, "You Clicked at " + position, Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
+        Custom_Grid_View_Box adapter = new Custom_Grid_View_Box(main_navigation_activity
+        , title,artist,coverId);
+        grid_View2 = view.findViewById(R.id.grid_View2);
+        grid_View2.setAdapter(adapter);
+        grid_View2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Toast.makeText(main_navigation_activity, "You Clicked at " + position, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        Custom_Grid_View_Box adapters = new Custom_Grid_View_Box(main_navigation_activity
+                , title,artist,coverId);
+        grid_View3 = view.findViewById(R.id.grid_View3);
+        grid_View3.setAdapter(adapters);
+        grid_View3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Toast.makeText(main_navigation_activity, "You Clicked at " + position, Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         return view;
     }

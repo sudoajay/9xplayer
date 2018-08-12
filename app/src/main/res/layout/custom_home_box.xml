@@ -58,7 +58,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/grid_Artist_Name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.18"
+            app:layout_constraintHorizontal_bias="0.15"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.65999997" />
@@ -67,12 +67,12 @@
             android:id="@+id/grid_Artist_Name"
             android:layout_width="85dp"
             android:layout_height="20dp"
-            android:text="Chainssmoker"
+            android:text="Chainssmok323"
             android:textColor="#d2cfcf"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.183"
+            app:layout_constraintHorizontal_bias="0.15"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.73" />

@@ -20,8 +20,6 @@ public class Custom_Grid_View_Box extends BaseAdapter{
     private Context mContext;
     private String[] title,artist;
     private int[] coverId;
-    private List<Palette.Swatch> swatchesList = new ArrayList<>();
-    private ConstraintLayout contraints_view;
 
     public Custom_Grid_View_Box(Context c , String[] title , String[] artist ,int[] coverId ) {
         mContext = c;

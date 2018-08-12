@@ -58,7 +58,7 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
             "Vijay",
             "Maxo"} ;
     String[] artist = {
-            "ChainsSmoker",
+            "Chainssmok3",
             "Vijayasd",
             "Maxoasd"} ;
     int[] coverId = {

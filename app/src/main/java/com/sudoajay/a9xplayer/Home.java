@@ -25,12 +25,20 @@ public class Home extends Fragment {
     String[] title = {
             "Ajay",
             "Vijay",
+            "Maxo",
+            "Ajay",
+            "Vijay",
             "Maxo"} ;
     String[] artist = {
             "Ajayas",
             "Vijayasd",
+            "Maxoasd","Ajayas",
+            "Vijayasd",
             "Maxoasd"} ;
     int[] coverId = {
+            R.drawable.cover1,
+            R.drawable.cover2,
+            R.drawable.cover1,
             R.drawable.cover1,
             R.drawable.cover2,
             R.drawable.cover1,
@@ -87,6 +95,8 @@ public class Home extends Fragment {
 
             }
         });
+
+
 
         return view;
     }

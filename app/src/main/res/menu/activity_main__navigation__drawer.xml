@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group   android:checkableBehavior="single">
         <item
             android:id="@+id/nav_Home"
             android:icon="@drawable/home"
-            android:title="@string/nav_home_title"
-            />
+            android:title="@string/nav_home_title" />
         <item
             android:id="@+id/nav_Music"
             android:icon="@drawable/music"
@@ -26,7 +25,8 @@
             android:icon="@drawable/playlist"
             android:title="@string/nav_playlist_title" />
     </group>
-    <group android:id="@+id/grp2" android:checkableBehavior="single" >
+
+    <group android:id="@+id/grp2" android:checkableBehavior="single"  >
             <item
                 android:id="@+id/nav_Setting"
                 android:icon="@drawable/setting"
@@ -35,6 +35,6 @@
                 android:id="@+id/nav_Rate_Us"
                 android:icon="@drawable/rate_us"
                 android:title="@string/nav_rate_title" />
-
     </group>
+
 </menu>

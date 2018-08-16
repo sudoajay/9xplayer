@@ -90,7 +90,7 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
         reference();
 
         //Get the storage permission
-//        Storage_Permission();
+        Storage_Permission();
 
        //  Default Fragment
         Home home = new Home();
@@ -175,9 +175,6 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
         public boolean onOptionsItemSelected(MenuItem item) {
             return super.onOptionsItemSelected(item);
         }
-
-
-
         private void reference() {
             textView_Tittle = findViewById(R.id.textView_Title);
             main_collapsing =findViewById(R.id.main_collapsing);
@@ -196,11 +193,6 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
             // grab The Data
             grab_the_music = new Grab_The_Data(this);
         }
-
-
-
-
-
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
@@ -216,7 +208,11 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
                textView_Tittle.setText(R.string.music_title);
                Music music = new Music();
                Turn_Of_On(false);
-               fragment = music.createInstance(Main_Navigation_Activity.this);
+               if(grab_the_music.getArray_Music_id().isEmpty())
+                   Toast.makeText(this, "Problem", Toast.LENGTH_SHORT).show();
+               fragment = music.createInstance(Main_Navigation_Activity.this,
+                       grab_the_music.getArray_Music_Artist(), grab_the_music.getArray_Music_id(),
+                       grab_the_music.getArray_Music_Timing(), grab_the_music.getArray_Music_Title());
                main_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                nested_Scroll_View.setNestedScrollingEnabled(false);
         } else if (id == R.id.nav_Video) {

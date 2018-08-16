@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,12 +30,20 @@ public class Music extends Fragment {
     private Playlist_Page music_playlist_page = new Playlist_Page();
     private Music_Artist_page music_artist_page = new Music_Artist_page();
     private Main_Navigation_Activity main_navigation_activity;
+    private ArrayList<String> array_Music_Artist,array_Music_Timing;
+    private ArrayList<Long>   array_Music_id;
+    private HashMap<Integer , String> array_Music_Title;
 
     public Music() {
         // Required empty public constructor
     }
-    public Music createInstance(Main_Navigation_Activity main_navigation_activity  ) {
+    public Music createInstance(Main_Navigation_Activity main_navigation_activity, ArrayList<String> array_Music_Artist,  ArrayList<Long>   array_Music_id,
+                                ArrayList<String> array_Music_Timing, HashMap<Integer , String> array_Music_Title) {
         this.main_navigation_activity = main_navigation_activity;
+        this.array_Music_Timing = array_Music_Timing ;
+        this.array_Music_Artist = array_Music_Artist;
+        this.array_Music_id = array_Music_id;
+        this.array_Music_Title = array_Music_Title;
         return this;
     }
 
@@ -75,7 +86,8 @@ public class Music extends Fragment {
 
     }
     public void Set_Fragemts(){
-        tab_page_adapter.addFragment("Song" , songVideo_page);
+        tab_page_adapter.addFragment("Song" ,songVideo_page.createInstance(main_navigation_activity,array_Music_Artist,array_Music_id,
+                array_Music_Timing,array_Music_Title));
         tab_page_adapter.addFragment("Albums" , music_album_page);
         tab_page_adapter.addFragment("Artist" , music_artist_page);
         tab_page_adapter.addFragment("Playlist" , music_playlist_page);

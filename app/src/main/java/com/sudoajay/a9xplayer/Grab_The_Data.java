@@ -1,5 +1,6 @@
 package com.sudoajay.a9xplayer;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.database.Cursor;
@@ -29,15 +30,15 @@ public class Grab_The_Data {
 
         // array instantiate
         Array_Instantiate();
-
-
+        // grab the music
+        Get_Music();
     }
     // Grab The Data And Stored in Array
     public void Get_Music() {
         int count=0;
         ContentResolver content_Resolver = activity.getContentResolver();
         Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-        Cursor cursor = content_Resolver.query(uri, null, null, null, MediaStore.Audio.Media.DISPLAY_NAME + " ASC" );
+        @SuppressLint("Recycle") Cursor cursor = content_Resolver.query(uri, null, null, null, MediaStore.Audio.Media.DISPLAY_NAME + " ASC" );
 
         if (cursor != null && cursor.moveToFirst()) {
             int song_Title = cursor.getColumnIndex(MediaStore.Audio.Media.TITLE);
@@ -90,7 +91,7 @@ public class Grab_The_Data {
         }
         long remaining_minutes = (duration - (hours * 3600000)) / 60000;
         String minutes = String.valueOf(remaining_minutes);
-        if (minutes.equals(0)) {
+        if (minutes.equals("0")) {
             minutes = "00";
         }
         long remaining_seconds = (duration - (hours * 3600000) - (remaining_minutes * 60000));
@@ -131,6 +132,7 @@ public class Grab_The_Data {
         return array_Music_id;
     }
     // array instantiate
+    @SuppressLint("UseSparseArrays")
     private void Array_Instantiate(){
         array_Music_Title = new HashMap<>();
         array_Music_Artist = new ArrayList<>();
@@ -167,7 +169,6 @@ public class Grab_The_Data {
             array_Music_id.set((int)pair.getKey(), tem);
             it.remove();
             count++;
-            Log.i("throw" ,   "key - " + pair.getKey() + " value - " + pair.getValue() + " patjh - " +array_Music_Path.get(count) );
         }
     }
     //sort the array

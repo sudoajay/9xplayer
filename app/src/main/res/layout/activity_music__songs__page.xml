@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView android:id="@+id/recycler"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:fastScrollAutoHide="true"
-    app:fastScrollAutoHideDelay="1500"
-    app:fastScrollPopupBackgroundSize="88dp"
-    app:fastScrollPopupBgColor="@color/colorAccent"
-    app:fastScrollPopupPosition="adjacent"
-    app:fastScrollPopupTextColor="@android:color/primary_text_dark"
-    app:fastScrollPopupTextSize="56sp"
-    app:fastScrollThumbEnabled="true"
-    app:fastScrollThumbColor="@color/colorAccent"
-    app:fastScrollEnableThumbInactiveColor="true"
-    tools:listitem="@layout/list_item_header"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" />
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+    <com.l4digital.fastscroll.FastScrollRecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:bubbleColor="#00bb00"
+        app:bubbleTextColor="#ffffff"
+        app:handleColor="#999999"
+        app:hideScrollbar="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:showTrack="false"
+        app:trackColor="#bbbbbb" />
+
+</android.support.constraint.ConstraintLayout>

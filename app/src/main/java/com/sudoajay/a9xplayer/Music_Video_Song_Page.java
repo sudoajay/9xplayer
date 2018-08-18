@@ -3,17 +3,11 @@ package com.sudoajay.a9xplayer;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-
-
 import com.l4digital.fastscroll.FastScrollRecyclerView;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -49,13 +43,13 @@ public class Music_Video_Song_Page extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.activity_music__songs__page, container, false);
-        FastScrollRecyclerView recycler_view = view.findViewById(R.id.recycler_view);
-        recycler_view.setLayoutManager(new LinearLayoutManager(mContext));
+
         custom_list_adapter_for_music = new Custom_List_Adapter_For_Music(mContext,array_Music_Artist,array_Music_id,
                 array_Music_Timing,array_Music_Title);
 
-        recycler_view.setAdapter(custom_list_adapter_for_music);
-
+        FastScrollRecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+        recyclerView.setAdapter(custom_list_adapter_for_music);
 
         return view;
     }

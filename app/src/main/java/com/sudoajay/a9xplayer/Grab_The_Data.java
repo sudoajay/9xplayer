@@ -74,7 +74,6 @@ public class Grab_The_Data {
 //            Collections.reverse(array_Music_Path);
 
             //sorting in alpha
-
             Sorting_Array();
         }
 
@@ -144,32 +143,25 @@ public class Grab_The_Data {
 
     //sort all array in alpha
     private void Sorting_Array(){
-        String temp;
-        long tem;
         int count =0;
         array_Music_Title = sortHashMapByValues(array_Music_Title);
+
         Iterator it = array_Music_Title.entrySet().iterator();
         while( it.hasNext()){
         Map.Entry pair = (Map.Entry)it.next();
 
-            temp = array_Music_Artist.get(count);
             array_Music_Artist.set(count , array_Music_Artist.get((int)pair.getKey()));
-            array_Music_Artist.set((int)pair.getKey(), temp);
 
-            temp = array_Music_Path.get(count);
             array_Music_Path.set(count , array_Music_Path.get((int)pair.getKey()));
-            array_Music_Path.set((int)pair.getKey(), temp);
 
-            temp = array_Music_Timing.get(count);
             array_Music_Timing.set(count , array_Music_Timing.get((int)pair.getKey()));
-            array_Music_Timing.set((int)pair.getKey(), temp);
 
-            tem = array_Music_id.get(count);
             array_Music_id.set(count , array_Music_id.get((int)pair.getKey()));
-            array_Music_id.set((int)pair.getKey(), tem);
-            it.remove();
+
             count++;
+
         }
+
     }
     //sort the array
     private static HashMap sortHashMapByValues(HashMap map) {
@@ -177,8 +169,8 @@ public class Grab_The_Data {
         // Defined Custom Comparator here
         Collections.sort(list, new Comparator() {
             public int compare(Object o1, Object o2) {
-                return ((Comparable) ((Map.Entry) (o1)).getValue())
-                        .compareTo(((Map.Entry) (o2)).getValue());
+                return ((String) ((Map.Entry) (o1)).getValue())
+                        .compareToIgnoreCase((String)((Map.Entry) (o2)).getValue());
             }
         });
 

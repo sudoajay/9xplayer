@@ -10,6 +10,8 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -28,6 +30,10 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import static android.provider.Contacts.PresenceColumns.IDLE;
+import static com.sudoajay.a9xplayer.Main_Navigation_Activity.AppBarStateChangeListener.State.COLLAPSED;
+import static com.sudoajay.a9xplayer.Main_Navigation_Activity.AppBarStateChangeListener.State.EXPANDED;
 
 public class Main_Navigation_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -86,11 +92,13 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //Get the storage permission
+        Storage_Permission();
+
         // all reference
         reference();
 
-        //Get the storage permission
-        Storage_Permission();
+
 
        //  Default Fragment
         Home home = new Home();
@@ -99,43 +107,46 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
 
         // Detect When the CollapsingToolbar is collapsed
         AppBarLayout appBarLayout = findViewById(R.id.main_appbar);
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange()) {
-                    // Collapsed
-
-                    ViewGroup.LayoutParams params = main_toolbar.getLayoutParams();
-                    CollapsingToolbarLayout.LayoutParams newParams;
-                    if (params instanceof CollapsingToolbarLayout.LayoutParams) {
-                        newParams = (CollapsingToolbarLayout.LayoutParams)params;
-                    } else {
-                        newParams = new CollapsingToolbarLayout.LayoutParams(params);
-                    }
-                    newParams.setCollapseMode(CollapsingToolbarLayout.LayoutParams.COLLAPSE_MODE_PIN);
-                    main_toolbar.setLayoutParams(newParams);
-                    main_toolbar.requestLayout();
-                    main_collapsing.setContentScrimColor(getResources().getColor(R.color.colorPrimary));
-                } else if (verticalOffset == 0) {
-                    // Expanded
-
-                    ViewGroup.LayoutParams params = main_toolbar.getLayoutParams();
-                    CollapsingToolbarLayout.LayoutParams newParams;
-                    if (params instanceof CollapsingToolbarLayout.LayoutParams) {
-                        newParams = (CollapsingToolbarLayout.LayoutParams)params;
-                    } else {
-                        newParams = new CollapsingToolbarLayout.LayoutParams(params);
-                    }
-                    newParams.setCollapseMode(CollapsingToolbarLayout.LayoutParams.COLLAPSE_MODE_PARALLAX);
-                    main_toolbar.setLayoutParams(newParams);
-                    main_toolbar.requestLayout();
-                    main_collapsing.setContentScrimColor(Color.TRANSPARENT);
-                } else {
-                    // Somewhere in between and far
-
-                }
-            }
+        appBarLayout.addOnOffsetChangedListener(new AppBarStateChangeListener(this) {
         });
+//        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+//            @Override
+//            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+//                if (Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange()) {
+//                    // Collapsed
+//
+//                    ViewGroup.LayoutParams params = main_toolbar.getLayoutParams();
+//                    CollapsingToolbarLayout.LayoutParams newParams;
+//                    if (params instanceof CollapsingToolbarLayout.LayoutParams) {
+//                        newParams = (CollapsingToolbarLayout.LayoutParams)params;
+//                    } else {
+//                        newParams = new CollapsingToolbarLayout.LayoutParams(params);
+//                    }
+//                    newParams.setCollapseMode(CollapsingToolbarLayout.LayoutParams.COLLAPSE_MODE_PIN);
+//                    main_toolbar.setLayoutParams(newParams);
+//                    main_toolbar.requestLayout();
+//                    main_collapsing.setContentScrimColor(getResources().getColor(R.color.colorPrimary));
+//                } else if (verticalOffset == 0) {
+//                    // Expanded
+//
+//                    ViewGroup.LayoutParams params = main_toolbar.getLayoutParams();
+//                    CollapsingToolbarLayout.LayoutParams newParams;
+//                    if (params instanceof CollapsingToolbarLayout.LayoutParams) {
+//                        newParams = (CollapsingToolbarLayout.LayoutParams)params;
+//                    } else {
+//                        newParams = new CollapsingToolbarLayout.LayoutParams(params);
+//                    }
+//                    newParams.setCollapseMode(CollapsingToolbarLayout.LayoutParams.COLLAPSE_MODE_PARALLAX);
+//                    main_toolbar.setLayoutParams(newParams);
+//                    main_toolbar.requestLayout();
+//                    main_collapsing.setContentScrimColor(Color.TRANSPARENT);
+//                } else {
+//                    // Somewhere in between and far
+//
+//                }
+//            }
+//        });
+
 
         // create Grid view soo boxes appear in grid view
         Create_Grid_View();
@@ -186,11 +197,9 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
             text_Heading=findViewById(R.id.text_Heading);
             inside_Constraint_layout = findViewById(R.id.inside_Constraint_layout);
 
-            // permission object created
-            android_permission_required = new Android_Permission_Required(this, this);
-
 
             // grab The Data
+            if(android_permission_required.isExternalStorageWritable())
             grab_the_music = new Grab_The_Data(this);
         }
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -208,11 +217,10 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
                textView_Tittle.setText(R.string.music_title);
                Music music = new Music();
                Turn_Of_On(false);
-               if(grab_the_music.getArray_Music_id().isEmpty())
-                   Toast.makeText(this, "Problem", Toast.LENGTH_SHORT).show();
                fragment = music.createInstance(Main_Navigation_Activity.this,
                        grab_the_music.getArray_Music_Artist(), grab_the_music.getArray_Music_id(),
                        grab_the_music.getArray_Music_Timing(), grab_the_music.getArray_Music_Title());
+
                main_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                nested_Scroll_View.setNestedScrollingEnabled(false);
         } else if (id == R.id.nav_Video) {
@@ -240,6 +248,9 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
         return true;
     }
     public void Storage_Permission(){
+
+        // permission object created
+        android_permission_required = new Android_Permission_Required(this, this);
         // storage permission check
         if(!android_permission_required.isExternalStorageWritable())
             android_permission_required.call_Thread();
@@ -291,5 +302,76 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
             more_Button.setVisibility(View.GONE);
             inside_Constraint_layout.setVisibility(View.GONE);
         }
+    }
+
+    public abstract static class AppBarStateChangeListener implements AppBarLayout.OnOffsetChangedListener {
+
+        private Main_Navigation_Activity main_navigation_activity;
+
+        public AppBarStateChangeListener (Main_Navigation_Activity main_navigation_activity){
+            this.main_navigation_activity = main_navigation_activity;
+        }
+
+        public enum State {
+            EXPANDED,
+            COLLAPSED,
+            IDLE
+        }
+
+        private State mCurrentState = State.IDLE;
+
+        @Override
+        public final void onOffsetChanged(final AppBarLayout appBarLayout, final int verticalOffset) {
+            main_navigation_activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+            if (Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange()) {
+                    // Collapsed
+                     ViewGroup.LayoutParams params = main_navigation_activity.main_toolbar.getLayoutParams();
+                    CollapsingToolbarLayout.LayoutParams newParams;
+                    if (params instanceof CollapsingToolbarLayout.LayoutParams) {
+                        newParams = (CollapsingToolbarLayout.LayoutParams)params;
+                    } else {
+                        newParams = new CollapsingToolbarLayout.LayoutParams(params);
+                    }
+                    newParams.setCollapseMode(CollapsingToolbarLayout.LayoutParams.COLLAPSE_MODE_PIN);
+                    main_navigation_activity.main_toolbar.setLayoutParams(newParams);
+                    main_navigation_activity.main_toolbar.requestLayout();
+                    main_navigation_activity.main_collapsing.setContentScrimColor(main_navigation_activity
+                        .getResources().getColor(R.color.colorPrimary));
+                } else if (verticalOffset == 0) {
+                    // Expanded
+                    ViewGroup.LayoutParams params = main_navigation_activity.main_toolbar.getLayoutParams();
+                    CollapsingToolbarLayout.LayoutParams newParams;
+                    if (params instanceof CollapsingToolbarLayout.LayoutParams) {
+                        newParams = (CollapsingToolbarLayout.LayoutParams)params;
+                    } else {
+                        newParams = new CollapsingToolbarLayout.LayoutParams(params);
+                    }
+                    newParams.setCollapseMode(CollapsingToolbarLayout.LayoutParams.COLLAPSE_MODE_PARALLAX);
+                    main_navigation_activity.main_toolbar.setLayoutParams(newParams);
+                    main_navigation_activity.main_toolbar.requestLayout();
+                    main_navigation_activity.main_collapsing.setContentScrimColor(Color.TRANSPARENT);
+
+                if (mCurrentState != State.EXPANDED) {
+
+                    main_navigation_activity.main_collapsing.setTitle("Dashboard");
+                    main_navigation_activity.textView_Tittle.setText("Dashboard");
+                }
+                    mCurrentState = State.EXPANDED;
+
+                } else {
+                    // Somewhere in between and far
+                if (mCurrentState != State.IDLE) {
+                    main_navigation_activity.main_collapsing.setTitle(" ");
+                    main_navigation_activity.textView_Tittle.setText(" ");
+                }
+                    mCurrentState = State.IDLE;
+                }
+
+                }
+            });
+
+            }
     }
 }

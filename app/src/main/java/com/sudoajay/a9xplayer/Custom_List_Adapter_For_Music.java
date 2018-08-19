@@ -3,6 +3,7 @@ package com.sudoajay.a9xplayer;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +11,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.l4digital.fastscroll.FastScroller;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -96,12 +99,17 @@ public class Custom_List_Adapter_For_Music  extends RecyclerView.Adapter<Custom_
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
+
         grab_the_cover = new Grab_The_Cover(mContext);
-        holder.text_Title.setText(array_Music_Title.get(position));
-        Glide.with(mContext)
+        List<String> list = new ArrayList<String>(array_Music_Title.values());
+        holder.text_Title.setText(list.get(position));
+        holder.cover.setImageResource(R.drawable.song_cover);
+        GlideApp.with(mContext)
                 .asBitmap()
                 .load(grab_the_cover.Get_Audio_Album_Image_ContentUri
                         (array_Music_id.get(position)))
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.cover);
         holder.text_Artist.setText(array_Music_Artist.get(position));
         holder.text_Timing.setText(array_Music_Timing.get(position));

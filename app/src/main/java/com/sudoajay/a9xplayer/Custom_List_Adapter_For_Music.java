@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AlphabetIndexer;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,6 +32,7 @@ public class Custom_List_Adapter_For_Music  extends RecyclerView.Adapter<Custom_
     private Grab_The_Cover grab_the_cover;
     private Context mContext;
     private ArrayList<Long>   array_Music_id;
+    private List<String> list = new ArrayList<>();
 
 
     // Provide a suitable constructor (depends on the kind of dataset)
@@ -41,12 +43,22 @@ public class Custom_List_Adapter_For_Music  extends RecyclerView.Adapter<Custom_
         this.array_Music_id = array_Music_id;
         this.array_Music_Timing =array_Music_Timing;
         this.array_Music_Title = array_Music_Title;
+        list = new ArrayList<>(array_Music_Title.values());
     }
 
     @Override
     public String getSectionText(int position) {
 
-        return null;
+        return First_Text(list.get(position).substring(0,1)) ;
+    }
+    // getSelectionText
+    //First Digit Cheeck
+    private String First_Text(String first_Text){
+        // if is it Alpha Then Go Below Code
+        if(first_Text.matches("[a-zA-Z]"))
+            return String.valueOf( Character.toUpperCase(first_Text.charAt(0)));
+        // if Thats Not Alpha
+        return "#";
     }
 
     // Provide a reference to the views for each data item
@@ -101,7 +113,7 @@ public class Custom_List_Adapter_For_Music  extends RecyclerView.Adapter<Custom_
 
 
         grab_the_cover = new Grab_The_Cover(mContext);
-        List<String> list = new ArrayList<>(array_Music_Title.values());
+
 
         holder.text_Title.setText(list.get(position));
         holder.text_Artist.setText(array_Music_Artist.get(position));

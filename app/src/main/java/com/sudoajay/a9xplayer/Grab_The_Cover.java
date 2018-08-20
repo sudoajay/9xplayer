@@ -21,11 +21,26 @@ public class Grab_The_Cover {
             Uri uri = ContentUris.withAppendedId(sArtworkUri, song_Id);
             ContentResolver res = mContext.getContentResolver();
             InputStream in = res.openInputStream(uri);
-            return BitmapFactory.decodeStream(in);
+            return getResizedBitmap(BitmapFactory.decodeStream(in), 100);
 
         } catch (Exception e){
             Log.e("Exception",e.getMessage());
         }
         return null;
     }
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float)width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
+    }
+
 }

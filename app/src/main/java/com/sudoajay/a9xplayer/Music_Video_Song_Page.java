@@ -50,6 +50,8 @@ public class Music_Video_Song_Page extends Fragment {
         FastScrollRecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView.setAdapter(custom_list_adapter_for_music);
+        recyclerView.setHasFixedSize(true);
+
 
         return view;
     }

@@ -1,4 +1,4 @@
-package com.sudoajay.a9xplayer;
+package com.sudoajay.a9xplayer.Custom_List_Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,23 +8,25 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AlphabetIndexer;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.l4digital.fastscroll.FastScroller;
+import com.sudoajay.a9xplayer.GlideApp;
+import com.sudoajay.a9xplayer.Grab_The_Cover;
+import com.sudoajay.a9xplayer.R;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.Executor;
 
 
 /**
  * Created by sudoajay on 12/23/17.
  */
 
-public class Custom_List_Adapter_For_Music  extends RecyclerView.Adapter<Custom_List_Adapter_For_Music.ViewHolder> implements FastScroller.SectionIndexer {
+public class Custom_List_Adapter_For_Album  extends RecyclerView.Adapter<Custom_List_Adapter_For_Album.ViewHolder> implements FastScroller.SectionIndexer {
 
     // private globall variable
     private ArrayList<String> array_Music_Artist,array_Music_Timing;
@@ -34,9 +36,13 @@ public class Custom_List_Adapter_For_Music  extends RecyclerView.Adapter<Custom_
     private ArrayList<Long>   array_Music_id;
     private List<String> list = new ArrayList<>();
 
+    // default Constructor
+    public Custom_List_Adapter_For_Album(){
+
+    }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public Custom_List_Adapter_For_Music(Context mContext, ArrayList<String> array_Music_Artist,ArrayList<Long> array_Music_id,
+    public Custom_List_Adapter_For_Album(Context mContext, ArrayList<String> array_Music_Artist,ArrayList<Long> array_Music_id,
                                          ArrayList<String> array_Music_Timing, HashMap<Integer , String> array_Music_Title) {
         this.array_Music_Artist = array_Music_Artist;
         this.mContext =mContext;
@@ -93,14 +99,14 @@ public class Custom_List_Adapter_For_Music  extends RecyclerView.Adapter<Custom_
 
     // Create new views (invoked by the layout manager)
     @Override
-    public Custom_List_Adapter_For_Music.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+    public Custom_List_Adapter_For_Album.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                                       int viewType) {
         // create a new view
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());
         View v =
                 inflater.inflate(R.layout.music_list_style, parent, false);
-        // set the view's size, margins, paddings and layout parameters
+        // set the view's size, margins, padding and layout parameters
         return new ViewHolder(v);
     }
 
@@ -133,15 +139,15 @@ public class Custom_List_Adapter_For_Music  extends RecyclerView.Adapter<Custom_
             @Override
             protected void onPostExecute(Bitmap result) {
                 super.onPostExecute(result);
-                    // If this item hasn't been recycled already, hide the
-                    // progress and set and show the image
+                // If this item hasn't been recycled already, hide the
+                // progress and set and show the image
                 GlideApp.with(mContext)
-                .asBitmap()
-                .load(doInBackground(holder))
-                .skipMemoryCache(true)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .error(R.drawable.song_cover)
-                .into(holder.cover);
+                        .asBitmap()
+                        .load(doInBackground(holder))
+                        .skipMemoryCache(true)
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .error(R.drawable.song_cover)
+                        .into(holder.cover);
             }
         }.execute(holder);
     }

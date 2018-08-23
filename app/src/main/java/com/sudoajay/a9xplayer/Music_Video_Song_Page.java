@@ -4,12 +4,16 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.l4digital.fastscroll.FastScrollRecyclerView;
 import com.sudoajay.a9xplayer.Custom_List_Adapter.Custom_List_Adapter_For_Music;
-import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
+import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersTouchListener;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,9 +58,6 @@ public class Music_Video_Song_Page extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView.setAdapter(custom_list_adapter_for_music);
         recyclerView.setHasFixedSize(true);
-
-
-
 
         return view;
     }

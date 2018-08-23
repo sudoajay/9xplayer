@@ -11,12 +11,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.GenericTransitionOptions;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.l4digital.fastscroll.FastScroller;
 import com.sudoajay.a9xplayer.GlideApp;
 import com.sudoajay.a9xplayer.Grab_The_Cover;
 import com.sudoajay.a9xplayer.R;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,28 +27,28 @@ import java.util.List;
  * Created by sudoajay on 12/23/17.
  */
 
-public class Custom_List_Adapter_For_Music  extends RecyclerView.Adapter<Custom_List_Adapter_For_Music.ViewHolder> implements FastScroller.SectionIndexer {
+public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_List_Adapter_For_Music.ViewHolder> implements FastScroller.SectionIndexer {
 
     // private globall variable
-    private ArrayList<String> array_Music_Artist,array_Music_Timing;
-    private HashMap<Integer , String> array_Music_Title;
+    private ArrayList<String> array_Music_Artist, array_Music_Timing;
+    private HashMap<Integer, String> array_Music_Title;
     private Grab_The_Cover grab_the_cover;
     private Context mContext;
-    private ArrayList<Long>   array_Music_id;
+    private ArrayList<Long> array_Music_id;
     private List<String> list = new ArrayList<>();
 
     // default Constructor
-    public Custom_List_Adapter_For_Music(){
+    public Custom_List_Adapter_For_Music() {
 
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public Custom_List_Adapter_For_Music(Context mContext, ArrayList<String> array_Music_Artist,ArrayList<Long> array_Music_id,
-                                         ArrayList<String> array_Music_Timing, HashMap<Integer , String> array_Music_Title) {
+    public Custom_List_Adapter_For_Music(Context mContext, ArrayList<String> array_Music_Artist, ArrayList<Long> array_Music_id,
+                                         ArrayList<String> array_Music_Timing, HashMap<Integer, String> array_Music_Title) {
         this.array_Music_Artist = array_Music_Artist;
-        this.mContext =mContext;
+        this.mContext = mContext;
         this.array_Music_id = array_Music_id;
-        this.array_Music_Timing =array_Music_Timing;
+        this.array_Music_Timing = array_Music_Timing;
         this.array_Music_Title = array_Music_Title;
         list = new ArrayList<>(array_Music_Title.values());
     }
@@ -55,14 +56,15 @@ public class Custom_List_Adapter_For_Music  extends RecyclerView.Adapter<Custom_
     @Override
     public String getSectionText(int position) {
 
-        return First_Text(list.get(position).substring(0,1)) ;
+        return First_Text(list.get(position).substring(0, 1));
     }
+
     // getSelectionText
     //First Digit Cheeck
-    private String First_Text(String first_Text){
+    private String First_Text(String first_Text) {
         // if is it Alpha Then Go Below Code
-        if(first_Text.matches("[a-zA-Z]"))
-            return String.valueOf( Character.toUpperCase(first_Text.charAt(0)));
+        if (first_Text.matches("[a-zA-Z]"))
+            return String.valueOf(Character.toUpperCase(first_Text.charAt(0)));
         // if Thats Not Alpha
         return "#";
     }
@@ -72,13 +74,13 @@ public class Custom_List_Adapter_For_Music  extends RecyclerView.Adapter<Custom_
     // you provide access to all the views for a data item in a view holder
     public class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        private TextView text_Title,text_Artist,text_Timing,text;
+        private TextView text_Title, text_Artist, text_Timing, text;
         private ImageView cover;
 
         ViewHolder(View itemView) {
             super(itemView);
-            text_Title =  itemView.findViewById(R.id.text_Title);
-            text_Artist =  itemView.findViewById(R.id.text_Artist);
+            text_Title = itemView.findViewById(R.id.text_Title);
+            text_Artist = itemView.findViewById(R.id.text_Artist);
             text_Timing = itemView.findViewById(R.id.text_Timing);
             cover = itemView.findViewById(R.id.cover);
         }
@@ -107,6 +109,7 @@ public class Custom_List_Adapter_For_Music  extends RecyclerView.Adapter<Custom_
         View v =
                 inflater.inflate(R.layout.music_list_style, parent, false);
         // set the view's size, margins, paddings and layout parameters
+
         return new ViewHolder(v);
     }
 
@@ -146,7 +149,8 @@ public class Custom_List_Adapter_For_Music  extends RecyclerView.Adapter<Custom_
                 .load(doInBackground(holder))
                 .skipMemoryCache(true)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .error(R.drawable.song_cover)
+                .fallback(R.drawable.song_cover)
+                        .transition(GenericTransitionOptions.with(R.anim.zoom_in))
                 .into(holder.cover);
             }
         }.execute(holder);

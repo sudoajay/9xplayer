@@ -3,18 +3,13 @@ package com.sudoajay.a9xplayer;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.l4digital.fastscroll.FastScrollRecyclerView;
 import com.sudoajay.a9xplayer.Custom_List_Adapter.Custom_List_Adapter_For_Music;
-import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersTouchListener;
-
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -49,17 +44,16 @@ public class Music_Video_Song_Page extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.activity_music__songs__page, container, false);
+        View rootView = inflater.inflate(R.layout.activity_music__songs__page, container, false);
 
         custom_list_adapter_for_music = new Custom_List_Adapter_For_Music(mContext,array_Music_Artist,array_Music_id,
-                array_Music_Timing,array_Music_Title);
+                array_Music_Timing,array_Music_Title,R.layout.music_list_style);
 
-        FastScrollRecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        FastScrollRecyclerView recyclerView = rootView.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView.setAdapter(custom_list_adapter_for_music);
         recyclerView.setHasFixedSize(true);
-
-        return view;
+        return rootView;
     }
 
 }

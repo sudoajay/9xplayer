@@ -29,6 +29,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sudoajay.a9xplayer.Custom_List_Adapter.Custom_Grid_View_Box;
+
 public class Main_Navigation_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private TextView textView_Tittle;
@@ -193,6 +195,7 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
             // grab The Data
             if(android_permission_required.isExternalStorageWritable())
             grab_the_music = new Grab_The_Data(this);
+
         }
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -212,7 +215,6 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
                fragment = music.createInstance(Main_Navigation_Activity.this,
                        grab_the_music.getArray_Music_Artist(), grab_the_music.getArray_Music_id(),
                        grab_the_music.getArray_Music_Timing(), grab_the_music.getArray_Music_Title());
-
                main_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                nested_Scroll_View.setNestedScrollingEnabled(false);
         } else if (id == R.id.nav_Video) {

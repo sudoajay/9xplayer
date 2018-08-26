@@ -1,9 +1,8 @@
-package com.sudoajay.a9xplayer;
+package com.sudoajay.a9xplayer.Custom_List_Adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.graphics.Palette;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +11,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.sudoajay.a9xplayer.GlideApp;
+import com.sudoajay.a9xplayer.R;
 
 
 public class Custom_Grid_View_Box extends BaseAdapter{
@@ -57,7 +56,7 @@ public class Custom_Grid_View_Box extends BaseAdapter{
         if (convertView == null) {
 
             grid = new View(mContext);
-            grid = inflater.inflate(R.layout.custom_home_box, null);
+            grid = inflater.inflate(R.layout.album_list_style, null);
             TextView grid_Title_Name =  grid.findViewById(R.id.grid_Title_Name);
             TextView grid_Artist_Name = grid.findViewById(R.id.grid_Artist_Name);
             ImageView grid_Cover = grid.findViewById(R.id.grid_Cover);

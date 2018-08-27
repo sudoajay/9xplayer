@@ -3,7 +3,9 @@ package com.sudoajay.a9xplayer.Custom_List_Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -71,8 +73,8 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
     // you provide access to all the views for a data item in a view holder
     public class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        private TextView text_Title, text_Artist, text_Timing, text;
-        private ImageView cover;
+        private TextView text_Title, text_Artist, text_Timing, grid_Title_Name,grid_Artist_Name;
+        private ImageView cover,grid_Cover,grid_More,blur_Image_View;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -81,6 +83,12 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
                 text_Artist = itemView.findViewById(R.id.text_Artist);
                 text_Timing = itemView.findViewById(R.id.text_Timing);
                 cover = itemView.findViewById(R.id.cover);
+            }else{
+                grid_Title_Name =  itemView.findViewById(R.id.grid_Title_Name);
+                 grid_Artist_Name = itemView.findViewById(R.id.grid_Artist_Name);
+                 grid_Cover = itemView.findViewById(R.id.grid_Cover);
+                 grid_More = itemView.findViewById(R.id.grid_More);
+                 blur_Image_View = itemView.findViewById(R.id.blur_Image_View);
             }
         }
     }
@@ -135,7 +143,7 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
                     holder = params[0];
 
                     return grab_the_cover.Get_Audio_Album_Image_ContentUri
-                            (array_Music_id.get(position));
+                            (array_Music_id.get(position),100);
                 }
 
                 @Override
@@ -153,14 +161,56 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
                 }
             }.execute(holder);
         }else{
-            
+            holder.grid_Title_Name.setText(list.get(position));
+            holder.grid_Artist_Name.setText(array_Music_Artist.get(position));
+
+            new AsyncTask<ViewHolder, Void, Bitmap>() {
+                private ViewHolder holder;
+
+                @Override
+                protected Bitmap doInBackground(ViewHolder... params) {
+                    holder = params[0];
+
+                    return grab_the_cover.Get_Audio_Album_Image_ContentUri
+                            (array_Music_id.get(position), 300);
+                }
+
+                @Override
+                protected void onPostExecute(Bitmap result) {
+                    super.onPostExecute(result);
+                    // If this item hasn't been recycled already, hide the
+                    // progress and set and show the image
+                    GlideApp.with(mContext)
+                            .asBitmap()
+                            .load(doInBackground(holder))
+                            .skipMemoryCache(true)
+                            .diskCacheStrategy(DiskCacheStrategy.NONE)
+                            .fallback(R.drawable.song_cover)
+                            .into(holder.grid_Cover);
+                }
+            }.execute(holder);
+
+            Palette.PaletteAsyncListener paletteListener = new Palette.PaletteAsyncListener() {
+                public void onGenerated(Palette palette) {
+                    // access palette colors here
+
+                    Palette.Swatch swatch = palette.getDarkVibrantSwatch();
+                    if(swatch != null)
+                        holder.blur_Image_View.setBackgroundColor(swatch.getRgb());
+
+                }
+            };
+
+            Bitmap myBitmap =  grab_the_cover.Get_Audio_Album_Image_ContentUri(array_Music_id.get(position),100);
+            if (myBitmap != null && !myBitmap.isRecycled()) {
+                Palette.from(myBitmap).generate(paletteListener);
+            }
         }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-            Log.e("Fck" , array_Music_Artist.get(2)+"");
         return array_Music_Artist.size();
 
     }

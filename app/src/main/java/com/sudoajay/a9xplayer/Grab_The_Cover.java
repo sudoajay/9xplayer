@@ -15,13 +15,13 @@ public class Grab_The_Cover {
         this.mContext = mContext;
     }
 
-    public Bitmap Get_Audio_Album_Image_ContentUri(long song_Id) {
+    public Bitmap Get_Audio_Album_Image_ContentUri(long song_Id,int max_Size) {
         try {
             Uri sArtworkUri = Uri.parse("content://media/external/audio/albumart");
             Uri uri = ContentUris.withAppendedId(sArtworkUri, song_Id);
             ContentResolver res = mContext.getContentResolver();
             InputStream in = res.openInputStream(uri);
-            return getResizedBitmap(BitmapFactory.decodeStream(in), 100);
+            return getResizedBitmap(BitmapFactory.decodeStream(in), max_Size);
 
         } catch (Exception e){
             Log.e("Exception",e.getMessage());

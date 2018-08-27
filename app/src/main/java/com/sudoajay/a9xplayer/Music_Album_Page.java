@@ -54,7 +54,7 @@ public class Music_Album_Page extends Fragment {
         FastScrollRecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView.setAdapter(custom_list_adapter_for_music);
-        recyclerView.setLayoutManager(new GridLayoutManager(mContext, 2));
+        recyclerView.setLayoutManager(new GridLayoutManager(mContext, 3));
         recyclerView.setHasFixedSize(true);
         return view;
     }

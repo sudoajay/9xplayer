@@ -48,7 +48,7 @@ public class Music_Album_Page extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.activtiy_music__album__page, container, false);
         custom_list_adapter_for_music = new Custom_List_Adapter_For_Music(mContext,array_Music_Artist,array_Music_id,
-                array_Music_Timing,array_Music_Title , R.layout.album_list_style);
+                array_Music_Timing,array_Music_Title , R.layout.style_home_glide);
 
 
         FastScrollRecyclerView recyclerView = view.findViewById(R.id.recycler_view);

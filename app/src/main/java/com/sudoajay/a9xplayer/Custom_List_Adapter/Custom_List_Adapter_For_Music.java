@@ -3,11 +3,9 @@ package com.sudoajay.a9xplayer.Custom_List_Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,7 +76,7 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
 
         ViewHolder(View itemView) {
             super(itemView);
-            if(layout_Style == R.layout.music_list_style) {
+            if(layout_Style == R.layout.style_music_list) {
                 text_Title = itemView.findViewById(R.id.text_Title);
                 text_Artist = itemView.findViewById(R.id.text_Artist);
                 text_Timing = itemView.findViewById(R.id.text_Timing);
@@ -129,7 +127,7 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
 
 
         grab_the_cover = new Grab_The_Cover(mContext);
-        if(layout_Style == R.layout.music_list_style) {
+        if(layout_Style == R.layout.style_music_list) {
 
             holder.text_Title.setText(list.get(position));
             holder.text_Artist.setText(array_Music_Artist.get(position));

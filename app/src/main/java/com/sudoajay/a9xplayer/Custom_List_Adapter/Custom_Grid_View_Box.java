@@ -56,7 +56,7 @@ public class Custom_Grid_View_Box extends BaseAdapter{
         if (convertView == null) {
 
             grid = new View(mContext);
-            grid = inflater.inflate(R.layout.album_list_style, null);
+            grid = inflater.inflate(R.layout.style_home_glide, null);
             TextView grid_Title_Name =  grid.findViewById(R.id.grid_Title_Name);
             TextView grid_Artist_Name = grid.findViewById(R.id.grid_Artist_Name);
             ImageView grid_Cover = grid.findViewById(R.id.grid_Cover);

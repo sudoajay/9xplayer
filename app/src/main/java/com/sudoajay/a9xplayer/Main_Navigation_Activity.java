@@ -1,6 +1,5 @@
 package com.sudoajay.a9xplayer;
 
-
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,6 +9,8 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -22,14 +23,12 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.sudoajay.a9xplayer.Custom_List_Adapter.Custom_Grid_View_Box;
+
 
 public class Main_Navigation_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -44,7 +43,7 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
     private NestedScrollView nested_Scroll_View;
     private Button more_Button;
     private TextView text_Heading;
-    private GridView grid_View;
+    private RecyclerView grid_View;
     private ConstraintLayout inside_Constraint_layout;
     String[] title = {
             "Selfie",
@@ -58,6 +57,7 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
             R.drawable.cover1,
             R.drawable.cover2,
             R.drawable.cover1,
+
     };
 
     @Override
@@ -267,19 +267,17 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
     }
 
     public void Create_Grid_View(){
-        Custom_Grid_View_Box adapter = new Custom_Grid_View_Box(this
-        , title,artist,coverId);
 
-        grid_View.setAdapter(adapter);
-        grid_View.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Toast.makeText(Main_Navigation_Activity.this, "You Clicked at " + position, Toast.LENGTH_SHORT).show();
+        grid_View.setHasFixedSize(true);
+        int spacingInPixels = 5;
+        grid_View.addItemDecoration(new Spaces_Item_Decoration_Glide(spacingInPixels));
 
-            }
-        });
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
+        grid_View.setLayoutManager(layoutManager);
+        Custom_Grid_View_Box custom_gridViewBox = new Custom_Grid_View_Box(this
+                , title,artist,coverId);
+        grid_View.setAdapter(custom_gridViewBox);
     }
     // turn off and on all element of Collopslayout
     private void Turn_Of_On(boolean visible){

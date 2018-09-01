@@ -3,6 +3,7 @@ package com.sudoajay.a9xplayer.Custom_List_Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
@@ -76,7 +77,7 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
 
         ViewHolder(View itemView) {
             super(itemView);
-            if(layout_Style == R.layout.style_music_list) {
+            if(layout_Style == R.layout.style_music_song_list) {
                 text_Title = itemView.findViewById(R.id.text_Title);
                 text_Artist = itemView.findViewById(R.id.text_Artist);
                 text_Timing = itemView.findViewById(R.id.text_Timing);
@@ -127,12 +128,11 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
 
 
         grab_the_cover = new Grab_The_Cover(mContext);
-        if(layout_Style == R.layout.style_music_list) {
+        if(layout_Style == R.layout.style_music_song_list) {
 
             holder.text_Title.setText(list.get(position));
             holder.text_Artist.setText(array_Music_Artist.get(position));
             holder.text_Timing.setText(array_Music_Timing.get(position));
-            holder.cover.setImageResource(R.drawable.song_cover);
             new AsyncTask<ViewHolder, Void, Bitmap>() {
                 private ViewHolder holder;
 
@@ -154,7 +154,8 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
                             .load(doInBackground(holder))
                             .skipMemoryCache(true)
                             .diskCacheStrategy(DiskCacheStrategy.NONE)
-                            .fallback(R.drawable.song_cover)
+                            .fallback(R.drawable.default_song_cover_small)
+                            .error(R.drawable.default_song_cover_small)
                             .into(holder.cover);
                 }
             }.execute(holder);
@@ -178,12 +179,13 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
                     super.onPostExecute(result);
                     // If this item hasn't been recycled already, hide the
                     // progress and set and show the image
+
                     GlideApp.with(mContext)
                             .asBitmap()
                             .load(doInBackground(holder))
                             .skipMemoryCache(true)
                             .diskCacheStrategy(DiskCacheStrategy.NONE)
-                            .fallback(R.drawable.song_cover)
+                            .fallback(R.drawable.default_song_cover_large)
                             .into(holder.grid_Cover);
                 }
             }.execute(holder);
@@ -201,6 +203,10 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
 
             Bitmap myBitmap =  grab_the_cover.Get_Audio_Album_Image_ContentUri(array_Music_id.get(position),100);
             if (myBitmap != null && !myBitmap.isRecycled()) {
+                Palette.from(myBitmap).generate(paletteListener);
+            }else{
+                myBitmap = BitmapFactory.decodeResource(mContext.getResources(),R.drawable.default_song_cover_large);
+                myBitmap= grab_the_cover.getResizedBitmap(myBitmap,100);
                 Palette.from(myBitmap).generate(paletteListener);
             }
         }

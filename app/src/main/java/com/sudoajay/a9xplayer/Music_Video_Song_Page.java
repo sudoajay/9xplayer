@@ -46,7 +46,7 @@ public class Music_Video_Song_Page extends Fragment {
         View rootView = inflater.inflate(R.layout.activity_music__songs__page, container, false);
 
         custom_list_adapter_for_music = new Custom_List_Adapter_For_Music(mContext,array_Music_Artist,array_Music_id,
-                array_Music_Timing,array_Music_Title,R.layout.style_music_list);
+                array_Music_Timing,array_Music_Title,R.layout.style_music_song_list);
 
         FastScrollRecyclerView recyclerView = rootView.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));

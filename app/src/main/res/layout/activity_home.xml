@@ -4,80 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/inside_Nested_Scroll_View"
     android:layout_width="match_parent"
-    android:background="#232323"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    android:background="#232323"
+    android:fillViewport="true">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:orientation="vertical"
-        tools:context=".Playlist">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical"
+    tools:context=".Playlist">
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    <android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/text_View_Heading2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:fontFamily="serif"
-                        android:text="@string/most_played_heading"
-                        android:textColor="#fff"
-                        android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/more_Button2"
-                        app:layout_constraintHorizontal_bias="0.083"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.026" />
+    <TextView
+    android:id="@+id/text_View_Heading2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:fontFamily="serif"
+    android:text="@string/most_played_heading"
+    android:textColor="#fff"
+    android:textSize="20sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/more_Button2"
+    app:layout_constraintHorizontal_bias="0.083"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.026" />
 
-                    <Button
-                        android:id="@+id/more_Button2"
-                        style="@style/Widget.AppCompat.Button"
-                        android:layout_width="52dp"
-                        android:layout_height="30dp"
-                        android:layout_marginEnd="16dp"
-                        android:background="@drawable/activity_my_more_button"
-                        android:fontFamily="sans-serif-smallcaps"
-                        android:text="@string/more_button"
-                        android:textAllCaps="false"
-                        android:textColor="#fff"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.81"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.026" />
-            </android.support.constraint.ConstraintLayout>
+    <Button
+    android:id="@+id/more_Button2"
+    style="@style/Widget.AppCompat.Button"
+    android:layout_width="52dp"
+    android:layout_height="30dp"
+    android:layout_marginEnd="16dp"
+    android:background="@drawable/activity_my_more_button"
+    android:fontFamily="sans-serif-smallcaps"
+    android:text="@string/more_button"
+    android:textAllCaps="false"
+    android:textColor="#fff"
+    android:textSize="16sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.81"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.026" />
+    </android.support.constraint.ConstraintLayout>
 
-        <GridView
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/grid_View2"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_marginTop="20dp"
-            android:columnWidth="90dp"
-            android:gravity="center"
-            android:horizontalSpacing="5dp"
-            android:numColumns="auto_fit"
-            android:stretchMode="columnWidth"
-            android:verticalSpacing="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.051" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp" />
 
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
 
             <TextView
                 android:id="@+id/text_View_Heading3"
@@ -116,24 +105,12 @@
                 app:layout_constraintVertical_bias="0.026" />
         </android.support.constraint.ConstraintLayout>
 
-        <GridView
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/grid_View3"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_marginTop="20dp"
-            android:columnWidth="90dp"
-            android:gravity="center"
-            android:horizontalSpacing="5dp"
-            android:numColumns="auto_fit"
-            android:stretchMode="columnWidth"
-            android:verticalSpacing="0.5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.051" />
-
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="14dp" />
 
     </LinearLayout>
 

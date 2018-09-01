@@ -7,6 +7,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.util.Log;
+import android.widget.Toast;
+
 import java.io.InputStream;
 
 public class Grab_The_Cover {
@@ -40,6 +42,7 @@ public class Grab_The_Cover {
             height = maxSize;
             width = (int) (height * bitmapRatio);
         }
+
         return Bitmap.createScaledBitmap(image, width, height, true);
     }
 

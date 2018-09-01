@@ -27,6 +27,7 @@ public class Music_Album_Page extends Fragment {
     private HashMap<Integer , String> array_Music_Title;
     private ArrayList<Long>   array_Music_id;
     private Context mContext;
+    private final int spacingInPixels =5;
 
     public Music_Album_Page() {
         // Required empty public constructor
@@ -54,8 +55,9 @@ public class Music_Album_Page extends Fragment {
         FastScrollRecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView.setAdapter(custom_list_adapter_for_music);
-        recyclerView.setLayoutManager(new GridLayoutManager(mContext, 3));
+        recyclerView.setLayoutManager(new GridLayoutManager(mContext, 2));
         recyclerView.setHasFixedSize(true);
+        recyclerView.addItemDecoration(new Spaces_Item_Decoration_Glide(spacingInPixels));
         return view;
     }
 

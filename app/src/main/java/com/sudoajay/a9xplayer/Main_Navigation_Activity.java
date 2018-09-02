@@ -67,7 +67,7 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
         // Checking for first time launch - before calling setContentView()
 
 
-        setContentView(R.layout.activity_main__navigation_);
+        setContentView(R.layout.activity_main_navigation_);
 
 
         // making notification bar transparent

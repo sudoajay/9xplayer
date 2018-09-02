@@ -27,7 +27,10 @@
         </activity>
         <activity
             android:name=".Artist_Album_Main_Page"
-            android:label="@string/title_activity_artist__album__main__page"></activity>
+            android:label="@string/title_activity_artist__album__main__page" />
+
+        <activity android:name=".Album_Page"
+            android:theme="@style/AppTheme.TransparentTheme"/>
     </application>
 
 </manifest>

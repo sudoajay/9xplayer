@@ -40,5 +40,9 @@ The game was released for Microsoft Windows via Steams early access beta program
 The game was released for Microsoft Windows via Steams early access beta program in March 2017, with a full release on December 20, 2017. That same month, the game was released by Microsoft Studios for the Xbox One via its Xbox Game Preview program. A few months later, it was localized and released by Tencent Games in China, while two mobile versions based on the game for Android and iOS were also released. The game is one of the bestselling of all time, with over fifty million sold across all platforms by June 2018. In addition, the Windows version holds a peak concurrent player count of over three million on Steam, which is an all-time high on the platform.Battlegrounds received several positive reviews from critics during both its early access period and on final release; reviewers found that while the game still was not fully finished and had some technical flaws, Battlegrounds presented new types of gameplay that could be easily approached by players of any skill level and was highly replayable. The game received several Game of the Year nominations among other accolades, and is considered by Greene to be the defining game of the battle royale genre. Several other video games, following in Battlegroundss success, added battle royale-style modes, while a number of clones, primarily out of China, also appeared. PUBG Corporation has run several small tournaments and introduced in-game tools to help with broadcasting the game to spectators, as they wish for it to become a popular eSport.</string>
     <string name="title_activity_artist__album__main__page">Artist_Album_Main_Page</string>
 
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
 
 </resources>

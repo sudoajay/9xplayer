@@ -72,7 +72,7 @@ public class Home extends Fragment {
 
         grid_View2 =  view.findViewById(R.id.grid_View2);
         grid_View2.setHasFixedSize(true);
-
+        grid_View2.setNestedScrollingEnabled(false);
         grid_View2.addItemDecoration(new Spaces_Item_Decoration_Glide(spacingInPixels));
 
         GridLayoutManager layoutManager = new GridLayoutManager(main_navigation_activity, 3);
@@ -84,7 +84,7 @@ public class Home extends Fragment {
 
         grid_View3 =  view.findViewById(R.id.grid_View3);
         grid_View3.setHasFixedSize(true);
-
+        grid_View3.setNestedScrollingEnabled(false);
         grid_View3.addItemDecoration(new Spaces_Item_Decoration_Glide(spacingInPixels));
         GridLayoutManager layoutManager2 = new GridLayoutManager(main_navigation_activity, 3);
         grid_View3.setLayoutManager(layoutManager2);

@@ -2,6 +2,7 @@ package com.sudoajay.a9xplayer.Custom_List_Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -11,9 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
 import android.widget.TextView;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.l4digital.fastscroll.FastScroller;
+import com.sudoajay.a9xplayer.Album_Page;
 import com.sudoajay.a9xplayer.GlideApp;
 import com.sudoajay.a9xplayer.Grab_The_Cover;
 import com.sudoajay.a9xplayer.R;
@@ -209,6 +212,8 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
                 myBitmap= grab_the_cover.getResizedBitmap(myBitmap,100);
                 Palette.from(myBitmap).generate(paletteListener);
             }
+
+            holder.text_Artist.setOnClickListener(new On_Click(position));
         }
     }
 
@@ -219,7 +224,26 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
 
     }
 
+    private  class On_Click implements View.OnClickListener{
+        private int position;
+        public On_Click(int position){
+            this.position=position;
+        }
+        @Override
+        public void onClick(View view) {
+            switch(view.getId()){
+                case R.id.grid_Title_Name:
+                    break;
+                case R.id.grid_Cover:
+                    Intent intent = new Intent(mContext,Album_Page.class);
+                     intent.putExtra("Cover_Send",array_Music_id.get(position));
+                     mContext.startActivity(intent);
+                    break;
 
+            }
+
+        }
+    }
 }
 
 

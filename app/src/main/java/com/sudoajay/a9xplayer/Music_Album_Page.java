@@ -52,12 +52,14 @@ public class Music_Album_Page extends Fragment {
                 array_Music_Timing,array_Music_Title , R.layout.style_home_glide);
 
 
-        FastScrollRecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        final FastScrollRecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView.setAdapter(custom_list_adapter_for_music);
         recyclerView.setLayoutManager(new GridLayoutManager(mContext, 2));
         recyclerView.setHasFixedSize(true);
         recyclerView.addItemDecoration(new Spaces_Item_Decoration_Glide(spacingInPixels));
+
+
         return view;
     }
 

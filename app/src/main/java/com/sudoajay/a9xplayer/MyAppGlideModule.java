@@ -1,8 +1,7 @@
-package com.sudoajay.a9xplayer.Glide_App_Requirement;
+package com.sudoajay.a9xplayer;
 
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.module.AppGlideModule;
 
 @GlideModule
-final class App_Glide_Module extends AppGlideModule  {
-}
+public final class MyAppGlideModule extends AppGlideModule {}

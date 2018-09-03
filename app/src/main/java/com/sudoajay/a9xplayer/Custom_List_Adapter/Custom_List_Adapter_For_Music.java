@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.l4digital.fastscroll.FastScroller;
 import com.sudoajay.a9xplayer.Album_Page;
+
 import com.sudoajay.a9xplayer.GlideApp;
 import com.sudoajay.a9xplayer.Grab_The_Cover;
 import com.sudoajay.a9xplayer.R;
@@ -213,7 +214,7 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
                 Palette.from(myBitmap).generate(paletteListener);
             }
 
-            holder.text_Artist.setOnClickListener(new On_Click(position));
+            holder.grid_Cover.setOnClickListener(new On_Click(position));
         }
     }
 

@@ -21,7 +21,8 @@ public class Album_Page extends AppCompatActivity {
         // refrence
         Refrence();
 
-        main_backdrop_image.setImageBitmap(grab_the_cover.Get_Audio_Album_Image_ContentUri(long_Bitmap , 500));
+        // set image bitmap in at background of app
+        main_backdrop_image.setImageBitmap(grab_the_cover.Get_Audio_Album_Image_ContentUri(long_Bitmap , 700));
 
 
     }

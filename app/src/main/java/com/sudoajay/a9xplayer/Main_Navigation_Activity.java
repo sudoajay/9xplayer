@@ -214,7 +214,8 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
                Turn_Of_On(false);
                fragment = music.createInstance(Main_Navigation_Activity.this,
                        grab_the_music.getArray_Music_Artist(), grab_the_music.getArray_Music_id(),
-                       grab_the_music.getArray_Music_Timing(), grab_the_music.getArray_Music_Title());
+                       grab_the_music.getArray_Music_Timing(), grab_the_music.getArray_Music_Title(),
+                       grab_the_music.getArray_Music_Album_Name());
                main_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                nested_Scroll_View.setNestedScrollingEnabled(false);
         } else if (id == R.id.nav_Video) {

@@ -49,7 +49,16 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
 
-
+        <com.l4digital.fastscroll.FastScrollRecyclerView
+            android:id="@+id/recycler_view_Inside_album_Page"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:bubbleColor="#00bb00"
+            app:bubbleTextColor="#ffffff"
+            app:handleColor="#999999"
+            app:trackColor="#bbbbbb"
+            app:hideScrollbar="false"
+            app:showTrack="false" />
     </android.support.v4.widget.NestedScrollView>
 
 

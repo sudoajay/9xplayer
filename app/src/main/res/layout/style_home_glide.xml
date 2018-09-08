@@ -2,8 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/content"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/shadow_effect_box">
+    android:layout_height="wrap_content">
 
 
     <ImageView
@@ -13,14 +12,14 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:scaleType="fitXY"
-        android:src="@drawable/images"
+        android:src="@drawable/default_song_cover_large"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/images" />
+        app:srcCompat="@drawable/default_song_cover_large" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"

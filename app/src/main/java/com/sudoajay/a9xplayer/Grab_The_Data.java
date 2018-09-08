@@ -225,7 +225,7 @@ public class Grab_The_Data {
                 array_Music_Artist_Name.remove(i-1);
                 array_Music_Timing.remove(i-1);
                 array_Music_Album_Name.remove(i-1);
-                array_Music_Title.values().remove(new File(array_Music_Path.get(i-1)).getName());
+                array_Music_Title.remove(i-1);
 
             }
         }

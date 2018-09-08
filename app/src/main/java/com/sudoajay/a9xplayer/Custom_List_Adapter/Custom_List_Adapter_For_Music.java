@@ -8,17 +8,14 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import android.widget.TextView;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.l4digital.fastscroll.FastScroller;
 import com.sudoajay.a9xplayer.Album_Page;
-
 import com.sudoajay.a9xplayer.GlideApp;
 import com.sudoajay.a9xplayer.Grab_The_Cover;
 import com.sudoajay.a9xplayer.R;
@@ -50,9 +47,13 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
         this.layout_Style = layout_Style;
         this.array_Music_id = array_Music_id;
         if(layout_Style == R.layout.style_music_song_list) {
-            this.array_Music_Artist = array_Music_Artist;
-            this.array_Music_Title = array_Music_Title;
-            this.array_Music_Timing = array_Music_Timing;
+            if(array_Music_Title != null) {
+                this.array_Music_Artist = array_Music_Artist;
+                this.array_Music_Title = array_Music_Title;
+                this.array_Music_Timing = array_Music_Timing;
+            }else {
+                this.array_Music_Artist = array_Music_Artist;
+            }
             if (array_Music_Title != null) list = new ArrayList<>(array_Music_Title.values());
         }else {
             this.array_Music_Album_Name = array_Music_Album_Name;
@@ -137,10 +138,15 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
 
         grab_the_cover = new Grab_The_Cover(mContext);
         if(layout_Style == R.layout.style_music_song_list) {
-
-            holder.text_Title.setText(list.get(position));
-            holder.text_Artist.setText(array_Music_Artist.get(position));
-            holder.text_Timing.setText(array_Music_Timing.get(position));
+            if(array_Music_Title != null) {
+                holder.text_Title.setText(list.get(position));
+                holder.text_Artist.setText(array_Music_Artist.get(position));
+                holder.text_Timing.setText(array_Music_Timing.get(position));
+            }else{
+                holder.text_Title.setText(array_Music_Artist.get(position));
+                holder.text_Artist.setText(null);
+                holder.text_Timing.setText(null);
+            }
             new AsyncTask<ViewHolder, Void, Bitmap>() {
                 private ViewHolder holder;
 

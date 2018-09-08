@@ -52,9 +52,9 @@ public class Album_Page extends AppCompatActivity {
         custom_list_adapter_for_music = new Custom_List_Adapter_For_Music(mContext,null,array_Music_id,
                 null,null,array_Music_Album_Name,R.layout.style_music_song_list);
 
-        FastScrollRecyclerView recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        recyclerView.setAdapter(custom_list_adapter_for_music);
-        recyclerView.setHasFixedSize(true);
+//        FastScrollRecyclerView recyclerView = findViewById(R.id.recycler_view);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+//        recyclerView.setAdapter(custom_list_adapter_for_music);
+//        recyclerView.setHasFixedSize(true);
     }
 }

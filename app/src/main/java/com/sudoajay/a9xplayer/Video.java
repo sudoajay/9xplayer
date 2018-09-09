@@ -20,7 +20,7 @@ public class Video extends Fragment {
     private ViewPager music_View_Pager;
     private Tab_Page_Adapter tab_page_adapter;
     private Music_Video_Song_Page songVideo_page = new Music_Video_Song_Page();
-    private Playlist_Page music_playlist_page = new Playlist_Page();
+    private Music_Video_Playlist_Page music_video_playlist_page = new Music_Video_Playlist_Page();
 
     public Video() {
         // Required empty public constructor
@@ -51,7 +51,7 @@ public class Video extends Fragment {
     }
     public void Set_Fragemts(){
         tab_page_adapter.addFragment("Video" , songVideo_page);
-        tab_page_adapter.addFragment("Music_Playlist_Page" , music_playlist_page);
+        tab_page_adapter.addFragment("Music_Video_Playlist_Page" , music_video_playlist_page);
 
     }
 

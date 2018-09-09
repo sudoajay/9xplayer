@@ -18,7 +18,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Music_Playlist_Page extends Fragment {
+public class Music_Video_Playlist_Page extends Fragment {
 
 
     // global variable
@@ -26,11 +26,11 @@ public class Music_Playlist_Page extends Fragment {
     private Custom_List_Adapter_For_Music custom_list_adapter_for_music;
     private ArrayList<String> array_Playlist;
 
-    public Music_Playlist_Page() {
+    public Music_Video_Playlist_Page() {
         // Required empty public constructor
     }
 
-    public Music_Playlist_Page createInstance(Context mContext) {
+    public Music_Video_Playlist_Page createInstance(Context mContext) {
 
         this.mContext= mContext;
         return this;

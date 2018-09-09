@@ -93,7 +93,7 @@ public class Music extends Fragment {
         tab_page_adapter.addFragment("Albums" , music_album_page.createInstance(main_navigation_activity,array_Music_id
                 ,array_Music_Album_Name));
         tab_page_adapter.addFragment("Artist" , music_artist_page.createInstance(main_navigation_activity , array_Music_Artist_Name ,array_Music_id));
-        tab_page_adapter.addFragment("Playlist" , music_playlist_page);
+        tab_page_adapter.addFragment("Music_Playlist" , music_playlist_page);
 
     }
 }

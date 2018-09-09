@@ -228,7 +228,7 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
                 textView_Tittle.setText(R.string.directories_title);
                 fragment=new Folder();
         } else if (id == R.id.nav_Playlists) {
-                fragment = new Playlist();
+                fragment = new Music_Playlist();
 
         } else if (id == R.id.nav_Setting) {
 

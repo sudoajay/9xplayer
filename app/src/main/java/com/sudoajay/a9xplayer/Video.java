@@ -51,7 +51,7 @@ public class Video extends Fragment {
     }
     public void Set_Fragemts(){
         tab_page_adapter.addFragment("Video" , songVideo_page);
-        tab_page_adapter.addFragment("Playlist" , music_playlist_page);
+        tab_page_adapter.addFragment("Music_Playlist" , music_playlist_page);
 
     }
 

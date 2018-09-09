@@ -31,7 +31,7 @@ import java.util.List;
 public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_List_Adapter_For_Music.ViewHolder> implements FastScroller.SectionIndexer {
 
     // private globall variable
-    private ArrayList<String> array_Music_Artist, array_Music_Timing,array_Music_Album_Name;
+    private ArrayList<String> array_Music_Artist, array_Music_Timing,array_Music_Album_Name,array_Playlist;
     private HashMap<Integer, String> array_Music_Title ;
     private Grab_The_Cover grab_the_cover;
     private Context mContext;
@@ -42,20 +42,24 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
     // Provide a suitable constructor (depends on the kind of dataset)
     public Custom_List_Adapter_For_Music(Context mContext, ArrayList<String> array_Music_Artist, ArrayList<Long> array_Music_id,
                                          ArrayList<String> array_Music_Timing, HashMap<Integer, String> array_Music_Title,
-                                             ArrayList<String> array_Music_Album_Name, int layout_Style) {
+                                             ArrayList<String> array_Music_Album_Name, int layout_Style,
+                                                ArrayList<String> array_Playlist) {
         this.mContext = mContext;
         this.layout_Style = layout_Style;
-        this.array_Music_id = array_Music_id;
         if(layout_Style == R.layout.style_music_song_list) {
+            this.array_Music_id = array_Music_id;
             if(array_Music_Title != null) {
                 this.array_Music_Artist = array_Music_Artist;
                 this.array_Music_Title = array_Music_Title;
                 this.array_Music_Timing = array_Music_Timing;
-            }else {
+            }else if(array_Music_Artist != null) {
                 this.array_Music_Artist = array_Music_Artist;
+            }else {
+                this.array_Playlist =array_Playlist;
             }
             if (array_Music_Title != null) list = new ArrayList<>(array_Music_Title.values());
         }else {
+            this.array_Music_id = array_Music_id;
             this.array_Music_Album_Name = array_Music_Album_Name;
         }
     }
@@ -142,6 +146,10 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
                 holder.text_Title.setText(list.get(position));
                 holder.text_Artist.setText(array_Music_Artist.get(position));
                 holder.text_Timing.setText(array_Music_Timing.get(position));
+            }else if(array_Music_Artist != null){
+                holder.text_Title.setText(array_Music_Artist.get(position));
+                holder.text_Artist.setText(null);
+                holder.text_Timing.setText(null);
             }else{
                 holder.text_Title.setText(array_Music_Artist.get(position));
                 holder.text_Artist.setText(null);

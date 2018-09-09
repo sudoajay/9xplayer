@@ -13,7 +13,7 @@
     android:layout_height="wrap_content"
     android:descendantFocusability="blocksDescendants"
     android:orientation="vertical"
-    tools:context=".Playlist">
+    tools:context=".Music_Playlist">
 
     <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"

@@ -1,66 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/background_light"
-    android:fitsSystemWindows="true"
-    >
+    android:layout_height="match_parent"/>
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:fitsSystemWindows="true"
-        >
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<android.support.design.widget.CoordinatorLayout-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@android:color/background_light"-->
+    <!--android:fitsSystemWindows="true"-->
+    <!--&gt;-->
 
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            android:fitsSystemWindows="true"
-            app:contentScrim="@color/colorPrimary"
-            app:expandedTitleMarginStart="48dp"
-            app:expandedTitleMarginEnd="64dp"
-            >
+    <!--<android.support.design.widget.AppBarLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="300dp"-->
+        <!--android:theme="@style/AppTheme.AppBarOverlay"-->
+        <!--android:fitsSystemWindows="true"-->
+        <!--&gt;-->
 
-            <ImageView
-                android:id="@+id/main_backdrop_image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:fitsSystemWindows="true"
-                android:src="@drawable/default_song_cover_small"
-                app:layout_collapseMode="parallax"
-                />
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/main_toolbar3"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/toolbar_Height"
-                app:layout_collapseMode="pin" />
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
-
-        <!--<com.l4digital.fastscroll.FastScrollRecyclerView-->
-            <!--android:id="@+id/recycler_view_Inside_album_Page"-->
+        <!--<android.support.design.widget.CollapsingToolbarLayout-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="match_parent"-->
-            <!--app:bubbleColor="#00bb00"-->
-            <!--app:bubbleTextColor="#ffffff"-->
-            <!--app:handleColor="#999999"-->
-            <!--app:trackColor="#bbbbbb"-->
-            <!--app:hideScrollbar="false"-->
-            <!--app:showTrack="false" />-->
-    </android.support.v4.widget.NestedScrollView>
+            <!--app:layout_scrollFlags="scroll|exitUntilCollapsed"-->
+            <!--android:fitsSystemWindows="true"-->
+            <!--app:contentScrim="@color/colorPrimary"-->
+            <!--app:expandedTitleMarginStart="48dp"-->
+            <!--app:expandedTitleMarginEnd="64dp"-->
+            <!--&gt;-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/main_backdrop_image"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:scaleType="centerCrop"-->
+                <!--android:fitsSystemWindows="true"-->
+                <!--android:src="@drawable/default_song_cover_small"-->
+                <!--app:layout_collapseMode="parallax"-->
+                <!--/>-->
+
+            <!--<android.support.v7.widget.Toolbar-->
+                <!--android:id="@+id/main_toolbar3"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/toolbar_Height"-->
+                <!--app:layout_collapseMode="pin" />-->
+        <!--</android.support.design.widget.CollapsingToolbarLayout>-->
+    <!--</android.support.design.widget.AppBarLayout>-->
+
+    <!--<android.support.v4.widget.NestedScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+        <!--&gt;-->
+
+        <!--&lt;!&ndash;<com.l4digital.fastscroll.FastScrollRecyclerView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/recycler_view_Inside_album_Page"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;app:bubbleColor="#00bb00"&ndash;&gt;-->
+            <!--&lt;!&ndash;app:bubbleTextColor="#ffffff"&ndash;&gt;-->
+            <!--&lt;!&ndash;app:handleColor="#999999"&ndash;&gt;-->
+            <!--&lt;!&ndash;app:trackColor="#bbbbbb"&ndash;&gt;-->
+            <!--&lt;!&ndash;app:hideScrollbar="false"&ndash;&gt;-->
+            <!--&lt;!&ndash;app:showTrack="false" />&ndash;&gt;-->
+    <!--</android.support.v4.widget.NestedScrollView>-->
 
 
 
-</android.support.design.widget.CoordinatorLayout>
+<!--</android.support.design.widget.CoordinatorLayout>-->

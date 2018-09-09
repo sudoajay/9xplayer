@@ -46,22 +46,17 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
                                                 ArrayList<String> array_Playlist) {
         this.mContext = mContext;
         this.layout_Style = layout_Style;
-        if(layout_Style == R.layout.style_music_song_list) {
-            this.array_Music_id = array_Music_id;
-            if(array_Music_Title != null) {
-                this.array_Music_Artist = array_Music_Artist;
-                this.array_Music_Title = array_Music_Title;
-                this.array_Music_Timing = array_Music_Timing;
-            }else if(array_Music_Artist != null) {
-                this.array_Music_Artist = array_Music_Artist;
-            }else {
-                this.array_Playlist =array_Playlist;
-            }
-            if (array_Music_Title != null) list = new ArrayList<>(array_Music_Title.values());
-        }else {
-            this.array_Music_id = array_Music_id;
-            this.array_Music_Album_Name = array_Music_Album_Name;
-        }
+        this.array_Music_id = array_Music_id;
+        this.array_Music_Artist = array_Music_Artist;
+        this.array_Music_Title = array_Music_Title;
+        this.array_Music_Timing = array_Music_Timing;
+        this.array_Music_Artist = array_Music_Artist;
+        this.array_Playlist =array_Playlist;
+
+        if (array_Music_Title != null) list = new ArrayList<>(array_Music_Title.values());
+        this.array_Music_id = array_Music_id;
+        this.array_Music_Album_Name = array_Music_Album_Name;
+
     }
 
     @Override
@@ -151,7 +146,7 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
                 holder.text_Artist.setText(null);
                 holder.text_Timing.setText(null);
             }else{
-                holder.text_Title.setText(array_Music_Artist.get(position));
+                holder.text_Title.setText(array_Playlist.get(position));
                 holder.text_Artist.setText(null);
                 holder.text_Timing.setText(null);
             }
@@ -161,9 +156,10 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
                 @Override
                 protected Bitmap doInBackground(ViewHolder... params) {
                     holder = params[0];
-
+                    if(array_Playlist == null)
                     return grab_the_cover.Get_Audio_Album_Image_ContentUri
                             (array_Music_id.get(position),100);
+                    return BitmapFactory.decodeResource(mContext.getResources(),R.drawable.default_song_cover_small);
                 }
 
                 @Override
@@ -245,7 +241,9 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
+        if(array_Music_id != null)
         return array_Music_id.size();
+        return array_Playlist.size();
 
     }
 
@@ -261,10 +259,10 @@ public class Custom_List_Adapter_For_Music extends RecyclerView.Adapter<Custom_L
                 case R.id.grid_Artist_Name:
                 case R.id.grid_Cover:
                 case R.id.blur_Image_View:
-                    Intent intent = new Intent(mContext,Album_Page.class);
-                     intent.putExtra("Cover_Send",array_Music_id.get(position));
-                    intent.putExtra("Album_Name_Send" , array_Music_Album_Name.get(position));
-                     mContext.startActivity(intent);
+//                    Intent intent = new Intent(mContext,Album_Page.class);
+//                     intent.putExtra("Cover_Send",array_Music_id.get(position));
+//                    intent.putExtra("Album_Name_Send" , array_Music_Album_Name.get(position));
+//                     mContext.startActivity(intent);
                     break;
 
             }

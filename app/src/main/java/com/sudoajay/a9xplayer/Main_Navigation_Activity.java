@@ -29,6 +29,8 @@ import android.widget.TextView;
 
 import com.sudoajay.a9xplayer.Custom_List_Adapter.Custom_Grid_View_Box;
 
+import static android.provider.Contacts.PresenceColumns.IDLE;
+
 
 public class Main_Navigation_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -101,7 +103,7 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
         fragment =home.createInstance(Main_Navigation_Activity.this);
         Replace_Fragments();
 
-        // Detect When the CollapsingToolbar is collapsed
+           // Detect When the CollapsingToolbar is collapsed
         AppBarLayout appBarLayout = findViewById(R.id.main_appbar);
                 appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
@@ -140,7 +142,6 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
                 }
             }
         });
-
 
         // create Grid view soo boxes appear in grid view
         Create_Grid_View();
@@ -228,7 +229,7 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
                 textView_Tittle.setText(R.string.directories_title);
                 fragment=new Folder();
         } else if (id == R.id.nav_Playlists) {
-                fragment = new Music_Playlist();
+                fragment = new Music_Playlist_Page();
 
         } else if (id == R.id.nav_Setting) {
 

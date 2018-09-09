@@ -27,7 +27,7 @@ public class Music extends Fragment {
     private Tab_Page_Adapter tab_page_adapter;
     private Music_Video_Song_Page songVideo_page = new Music_Video_Song_Page();
     private Music_Album_Page  music_album_page = new Music_Album_Page();
-    private Playlist_Page music_playlist_page = new Playlist_Page();
+    private Music_Playlist_Page music_playlist_page = new Music_Playlist_Page();
     private Music_Artist_page music_artist_page = new Music_Artist_page();
     private Main_Navigation_Activity main_navigation_activity;
     private ArrayList<String> array_Music_Artist_Name,array_Music_Timing, array_Music_Album_Name;
@@ -93,7 +93,7 @@ public class Music extends Fragment {
         tab_page_adapter.addFragment("Albums" , music_album_page.createInstance(main_navigation_activity,array_Music_id
                 ,array_Music_Album_Name));
         tab_page_adapter.addFragment("Artist" , music_artist_page.createInstance(main_navigation_activity , array_Music_Artist_Name ,array_Music_id));
-        tab_page_adapter.addFragment("Music_Playlist" , music_playlist_page);
+        tab_page_adapter.addFragment("Playlist" ,music_playlist_page.createInstance(main_navigation_activity) );
 
     }
 }

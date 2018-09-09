@@ -45,12 +45,12 @@ public class Album_Page extends AppCompatActivity {
 
     }
     private void Refrence(){
-        main_backdrop_image = findViewById(R.id.main_backdrop_image);
+     //   main_backdrop_image = findViewById(R.id.main_backdrop_image);
 
         grab_the_cover = new Grab_The_Cover(this);
 
         custom_list_adapter_for_music = new Custom_List_Adapter_For_Music(mContext,null,array_Music_id,
-                null,null,array_Music_Album_Name,R.layout.style_music_song_list);
+                null,null,array_Music_Album_Name,R.layout.style_music_song_list,null);
 
 //        FastScrollRecyclerView recyclerView = findViewById(R.id.recycler_view);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(mContext));

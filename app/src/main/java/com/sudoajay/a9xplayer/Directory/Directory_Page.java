@@ -1,4 +1,4 @@
-package com.sudoajay.a9xplayer;
+package com.sudoajay.a9xplayer.Directory;
 
 
 import android.os.Build;
@@ -12,30 +12,44 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.sudoajay.a9xplayer.Main_Navigation_Activity;
+import com.sudoajay.a9xplayer.R;
+import com.sudoajay.a9xplayer.Tab_Page_Adapter;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Directory extends Fragment {
+public class Directory_Page extends Fragment {
     private TabLayout directory_Tab_Layout;
     private ViewPager directory_View_Pager;
     private Tab_Page_Adapter tab_page_adapter;
     private Directory_Music_Video_Page directory_Music_Page = new Directory_Music_Video_Page();
     private Directory_Music_Video_Page directory_Video_Page =new Directory_Music_Video_Page();
+    private Main_Navigation_Activity main_navigation_activity;
 
 
-    public Directory() {
+    public Directory_Page() {
         // Required empty public constructor
     }
 
-
+    public Directory_Page createInstance(Main_Navigation_Activity main_navigation_activity) {
+        this.main_navigation_activity = main_navigation_activity;
+        return this;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = main_navigation_activity.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
+        }
         // clone the inflater using the ContextThemeWrapper
-        View view = inflater.inflate(R.layout.activity_directory, container, false);
+        View view = inflater.inflate(R.layout.activity_directory_page, container, false);
 
         directory_Tab_Layout =view.findViewById(R.id.directory_Tab_Layout);
         directory_View_Pager = view.findViewById(R.id.directory_View_Pager);

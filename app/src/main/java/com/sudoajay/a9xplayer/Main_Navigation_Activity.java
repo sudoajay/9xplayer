@@ -28,6 +28,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sudoajay.a9xplayer.Custom_List_Adapter.Custom_Grid_View_Box;
+import com.sudoajay.a9xplayer.Directory.Directory_Page;
 
 
 public class Main_Navigation_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -229,12 +230,18 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
                 nested_Scroll_View.setNestedScrollingEnabled(false);
         } else if (id == R.id.nav_Folder) {
                 textView_Tittle.setText(R.string.directories_title);
-                fragment=new Directory();
+                Directory_Page directoryPage = new Directory_Page();
+                fragment= directoryPage.createInstance(Main_Navigation_Activity.this);
                 main_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 nested_Scroll_View.setNestedScrollingEnabled(false);
         } else if (id == R.id.nav_Playlists) {
                 fragment = new Music_Video_Playlist_Page();
-
+            textView_Tittle.setText(R.string.video_title);
+            Music_Video_Playlist_Page music_video_playlist_page = new Music_Video_Playlist_Page();
+            fragment = music_video_playlist_page.createInstance(Main_Navigation_Activity.this);
+            Turn_Of_On(false);
+            main_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            nested_Scroll_View.setNestedScrollingEnabled(false);
         } else if (id == R.id.nav_Setting) {
 
         }else if (id == R.id.nav_Rate_Us) {

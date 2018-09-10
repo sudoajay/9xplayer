@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,12 +23,26 @@ public class Video extends Fragment {
     private ViewPager music_View_Pager;
     private Tab_Page_Adapter tab_page_adapter;
     private Music_Video_Song_Page songVideo_page = new Music_Video_Song_Page();
-    private Music_Video_Playlist_Page music_video_playlist_page = new Music_Video_Playlist_Page();
+    private Music_Video_Playlist_Page music_Video_playlist_page = new Music_Video_Playlist_Page();
+    private Main_Navigation_Activity main_navigation_activity;
+    private ArrayList<String> array_Music_Artist_Name,array_Music_Timing, array_Music_Album_Name;
+    private ArrayList<Long>   array_Music_id;
+    private HashMap<Integer , String> array_Music_Title;
 
     public Video() {
         // Required empty public constructor
     }
-
+    public Video createInstance(Main_Navigation_Activity main_navigation_activity, ArrayList<String> array_Music_Artist_Name,
+                               ArrayList<Long>   array_Music_id, ArrayList<String> array_Music_Timing, HashMap<Integer ,
+            String> array_Music_Title, ArrayList<String> array_Music_Album_Name) {
+        this.main_navigation_activity = main_navigation_activity;
+        this.array_Music_Timing = array_Music_Timing ;
+        this.array_Music_Artist_Name = array_Music_Artist_Name;
+        this.array_Music_id = array_Music_id;
+        this.array_Music_Title = array_Music_Title;
+        this.array_Music_Album_Name = array_Music_Album_Name;
+        return this;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,8 +67,9 @@ public class Video extends Fragment {
 
     }
     public void Set_Fragemts(){
-        tab_page_adapter.addFragment("Video" , songVideo_page);
-        tab_page_adapter.addFragment("Music_Video_Playlist_Page" , music_video_playlist_page);
+        tab_page_adapter.addFragment("Video" , songVideo_page.createInstance(main_navigation_activity,array_Music_Artist_Name,array_Music_id,
+                array_Music_Timing,array_Music_Title));
+        tab_page_adapter.addFragment("Playlist" , music_Video_playlist_page.createInstance(main_navigation_activity) );
 
     }
 

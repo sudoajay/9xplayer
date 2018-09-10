@@ -219,13 +219,19 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
                nested_Scroll_View.setNestedScrollingEnabled(false);
         } else if (id == R.id.nav_Video) {
                 textView_Tittle.setText(R.string.video_title);
-                fragment = new Video();
+                Video video = new Video();
+                fragment = video.createInstance(Main_Navigation_Activity.this,
+                        grab_the_music.getArray_Music_Artist(), grab_the_music.getArray_Music_id(),
+                        grab_the_music.getArray_Music_Timing(), grab_the_music.getArray_Music_Title(),
+                        grab_the_music.getArray_Music_Album_Name());
                 Turn_Of_On(false);
                 main_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 nested_Scroll_View.setNestedScrollingEnabled(false);
         } else if (id == R.id.nav_Folder) {
                 textView_Tittle.setText(R.string.directories_title);
-                fragment=new Folder();
+                fragment=new Directory();
+                main_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                nested_Scroll_View.setNestedScrollingEnabled(false);
         } else if (id == R.id.nav_Playlists) {
                 fragment = new Music_Video_Playlist_Page();
 

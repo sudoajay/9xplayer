@@ -29,9 +29,10 @@ import android.widget.TextView;
 
 import com.sudoajay.a9xplayer.Custom_List_Adapter.Custom_Grid_View_Box;
 import com.sudoajay.a9xplayer.Directory.Directory_Page;
+import com.sudoajay.a9xplayer.Playlist.Playlist_Page;
 
 
-public class Main_Navigation_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class githubMain_Navigation_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private TextView textView_Tittle;
     private Android_Permission_Required android_permission_required;
@@ -237,8 +238,8 @@ public class Main_Navigation_Activity extends AppCompatActivity implements Navig
         } else if (id == R.id.nav_Playlists) {
                 fragment = new Music_Video_Playlist_Page();
             textView_Tittle.setText(R.string.video_title);
-            Music_Video_Playlist_Page music_video_playlist_page = new Music_Video_Playlist_Page();
-            fragment = music_video_playlist_page.createInstance(Main_Navigation_Activity.this);
+            Playlist_Page playlist_page = new Playlist_Page();
+            fragment = playlist_page.createInstance(Main_Navigation_Activity.this);
             Turn_Of_On(false);
             main_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             nested_Scroll_View.setNestedScrollingEnabled(false);
